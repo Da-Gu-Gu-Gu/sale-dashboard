@@ -29,11 +29,11 @@ function getItem(
 }
 
 const menus: MenuItem[] = [
-  getItem("Orders", "5", paths.order, <ShoppingOutlined />),
-  getItem("Sale Invoice", "1", paths.sale, <ShoppingOutlined />),
-  getItem("Customers", "2", paths.customer, <UserOutlined />),
-  getItem("Products", "3", paths.product, <ProductOutlined />),
-  getItem("Sale Channels", "4", paths.channel, <CompressOutlined />),
+  getItem("Orders", "1", paths.order, <ShoppingOutlined />),
+  getItem("Sale Invoice", "2", paths.sale, <ShoppingOutlined />),
+  getItem("Customers", "3", paths.customer, <UserOutlined />),
+  getItem("Products", "4", paths.product, <ProductOutlined />),
+  getItem("Sale Channels", "5", paths.channel, <CompressOutlined />),
   getItem("Payments Methods", "6", paths.payment, <BankOutlined />),
 ];
 

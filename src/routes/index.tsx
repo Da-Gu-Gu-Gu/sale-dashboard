@@ -7,12 +7,17 @@ import Customer from "../Pages/Customer";
 import Products from "../Pages/Product";
 import SaleChannel from "../Pages/Channel";
 import Payments from "../Pages/Payment";
+import OrderDetail from "../Pages/Order/OrderDetail";
+import CreateOrder from "../Pages/Order/OrderCreate";
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
           <Route path={paths.order} element={<Order />} />
+          <Route path={paths.orderDetail} element={<OrderDetail />} />
+          <Route path={paths.orderCreate} element={<CreateOrder />} />
+
           <Route path={paths.sale} element={<Sale />} />
           <Route path={paths.customer} element={<Customer />} />
           <Route path={paths.product} element={<Products />} />

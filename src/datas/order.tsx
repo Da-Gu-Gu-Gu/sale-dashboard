@@ -1,6 +1,8 @@
 import { Space } from "antd";
 
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { paths } from "../routes/data";
 export const columnsData = [
   {
     title: "OrderId",
@@ -37,7 +39,9 @@ export const columnsData = [
     key: "action",
     render: (_: any, order: any) => (
       <Space size="middle" onClick={() => console.log(order)}>
-        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+        <Link to={paths.orderDetail}>
+          <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+        </Link>
         <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
       </Space>
     ),
@@ -143,5 +147,90 @@ export const dataSource = [
     channel: "Online",
     total: "$140.25",
     date: "2024-07-10",
+  },
+];
+
+import { InputNumber } from "antd";
+
+export const orderDetailColumnData = [
+  {
+    title: "Name",
+    dataIndex: "product_name",
+    key: "product_name",
+  },
+  {
+    title: "Unit Price",
+    dataIndex: "product_price",
+    key: "product_price",
+  },
+  {
+    title: "Qty",
+    key: "product_price",
+    render: (_: any, product: any) => (
+      <Space size="middle" onClick={() => console.log(product)}>
+        <InputNumber
+          min={1}
+          max={10}
+          size="small"
+          defaultValue={product.qty}
+          className="cursor-pointer text-lg text-blue-700"
+        />
+      </Space>
+    ),
+  },
+  {
+    title: "Sub Total",
+    dataIndex: "total", //subtotal
+    key: "total",
+  },
+];
+
+export const orderDetailData = [
+  {
+    key: 123,
+    product_name: "Hein",
+    product_price: "2323",
+    qty: 3,
+    total: "$140.25",
+  },
+  {
+    key: 2323,
+    product_name: "Htet",
+    product_price: "2323",
+    qty: 2,
+    total: "$140.25",
+  },
+];
+
+export const orderCreateColumnData = [
+  {
+    title: "Name",
+    dataIndex: "product_name",
+    key: "product_name",
+  },
+  {
+    title: "Price",
+    dataIndex: "product_price",
+    key: "product_price",
+  },
+  {
+    title: "Qty",
+    key: "product_price",
+    render: (_: any, product: any) => (
+      <Space size="middle" onClick={() => console.log(product)}>
+        <InputNumber
+          min={1}
+          max={product?.product_stock}
+          size="small"
+          defaultValue={1}
+          className="cursor-pointer text-lg text-blue-700"
+        />
+      </Space>
+    ),
+  },
+  {
+    title: "Sub Total",
+    dataIndex: "total", //subtotal
+    key: "total",
   },
 ];

@@ -1,56 +1,124 @@
 {
-  "sales":[
+  "sales": [
     {
-      "id":1,
-      "customerId":1,
-      "status":true,
-      "channelId":1,
-      "total":399,
-      "date":"2024-05-23"
+      "id": "3",
+      "customerId": 1,
+      "status": true,
+      "channelId": 1,
+      "total": "19.98",
+      "orderProducts": [
+        {
+          "productId": 2,
+          "product_name": "AA",
+          "product_code": "PROD005",
+          "product_price": 9.99,
+          "product_stock": 5,
+          "qty": 2
+        }
+      ],
+      "date": "2024-07-23T17:00:00.000Z"
+    },
+    {
+      "id": 0.7125980829824465,
+      "date": 1721817355062,
+      "customerId": "1",
+      "channelId": "1",
+      "status": false,
+      "orderProducts": [
+        {
+          "id": "1",
+          "product_name": "Headphones",
+          "product_code": "PROD004",
+          "product_price": 199.99,
+          "product_stock": 5,
+          "product_available": true,
+          "qty": 1,
+          "productId": "1"
+        },
+        {
+          "id": "2",
+          "product_name": "AA",
+          "product_code": "PROD005",
+          "product_price": 9.99,
+          "product_stock": 5,
+          "product_available": true,
+          "qty": 1,
+          "productId": "2"
+        }
+      ],
+      "total": "209.98"
+    },
+    {
+      "id": "50",
+      "date": 1721817689574,
+      "customerId": 1,
+      "channelId": 1,
+      "status": true,
+      "orderProducts": [
+        {
+          "id": "2",
+          "product_name": "AA",
+          "product_code": "PROD005",
+          "product_price": 9.99,
+          "product_stock": 5,
+          "product_available": true,
+          "qty": 2,
+          "productId": 2
+        }
+      ],
+      "total": "19.98"
     }
   ],
-  "payments":[
+  "payments": [
     {
-      "id":1,
-      "payment_name":"KBank",
-      "payment_account":"12323232"
+      "id": "1",
+      "payment_name": "KBank",
+      "payment_account": "12323232"
     }
   ],
-  "customers":[
+  "customers": [
     {
-      "id": 1,
+      "id": "1",
       "customer_name": "John Doe",
       "customer_phone": "123-456-7890",
       "customer_address": "123 Main St, Springfield, IL"
     },
     {
-      "id": 2,
-      "customer_name": "John Doe",
+      "id": "2",
+      "customer_name": "John",
       "customer_phone": "123-456-7890",
       "customer_address": "123 Main St, Springfield, IL"
     }
   ],
-  "products":[
+  "products": [
     {
-      "id": 1,
+      "id": "1",
       "product_name": "Headphones",
       "product_code": "PROD004",
-      "product_price": "$199.99",
+      "product_price": 199.99,
+      "product_stock": 5,
+      "product_available": true
+    },
+    {
+      "id": "2",
+      "product_name": "AA",
+      "product_code": "PROD005",
+      "product_price": 9.99,
       "product_stock": 5,
       "product_available": true
     }
   ],
-  "channels":[
+  "channels": [
     {
-      "id": 1,
+      "id": "1",
       "channel_name": "Facebook"
     },
     {
-      "id": 2,
+      "id": "2",
       "channel_name": "Website"
     },
     {
-      "id": 3,
+      "id": "3",
       "channel_name": "On Ground"
     }
   ]

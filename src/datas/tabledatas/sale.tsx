@@ -1,11 +1,39 @@
-import { Space } from "antd";
+import { Button, Modal, Space } from "antd";
 
 import {
   CheckCircleOutlined,
   DeleteOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+const SaleActions = ({ sale }: any) => {
+  const { loading, deleteSaleInvoice } = useDeleteSale();
+  const navigate = useNavigate();
+  const warning = () => {
+    Modal.warning({
+      title: "Would you Delete this sale invoice?",
+      // content: "some messages...some messages...",
+      onOk: () => {
+        deleteSaleInvoice(sale.id);
+        navigate(paths.sale);
+      },
+    });
+  };
+  return (
+    <Space size="middle" onClick={() => console.log(sale)}>
+      <Link to={`/sale/${sale.id}`}>
+        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+      </Link>
+      <Button
+        onClick={warning}
+        icon={
+          <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
+        }
+      />
+    </Space>
+  );
+};
 
 export const columnsData = [
   {
@@ -54,20 +82,17 @@ export const columnsData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, sale: any) => (
-      <Space size="middle" onClick={() => console.log(sale)}>
-        <Link to={`/sale/${sale.id}`}>
-          <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
-        </Link>
-        <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
-      </Space>
-    ),
+    render: (_: any, sale: any) => {
+      return <SaleActions sale={sale} />;
+    },
   },
 ];
 
 import { InputNumber } from "antd";
+import { useDeleteSale } from "../../api/useSales";
+import { paths } from "../../routes/data";
 
-export const saleDetailColumnData = [
+export const saleDetailColumnData = (data: any, onQtyChange: any) => [
   {
     title: "Name",
     dataIndex: "product_name",
@@ -82,12 +107,13 @@ export const saleDetailColumnData = [
     title: "Qty",
     key: "product_price",
     render: (_: any, product: any) => (
-      <Space size="middle" onClick={() => console.log(product)}>
+      <Space size="middle">
         <InputNumber
           min={1}
           max={10}
           size="small"
           defaultValue={product.qty}
+          onChange={(value) => onQtyChange(product.productId, value)}
           className="cursor-pointer text-lg text-blue-700"
         />
       </Space>
@@ -95,12 +121,16 @@ export const saleDetailColumnData = [
   },
   {
     title: "Sub Total",
-    dataIndex: "total", //subtotal
     key: "total",
+    render: (_: any, product: any) => {
+      const price = product.product_price || 0;
+      const qty = product.qty || 0;
+      return <p>$ {(price * qty).toFixed(2)}</p>;
+    },
   },
 ];
 
-export const saleCreateColumnData = [
+export const saleCreateColumnData = (data: any, onQtyChange: any) => [
   {
     title: "Name",
     dataIndex: "product_name",
@@ -115,12 +145,13 @@ export const saleCreateColumnData = [
     title: "Qty",
     key: "product_price",
     render: (_: any, product: any) => (
-      <Space size="middle" onClick={() => console.log(product)}>
+      <Space size="middle">
         <InputNumber
           min={1}
           max={product?.product_stock}
           size="small"
-          defaultValue={1}
+          defaultValue={product.qty}
+          onChange={(value) => onQtyChange(product.id, value)}
           className="cursor-pointer text-lg text-blue-700"
         />
       </Space>
@@ -128,7 +159,13 @@ export const saleCreateColumnData = [
   },
   {
     title: "Sub Total",
-    dataIndex: "total", //subtotal
     key: "total",
+    render: (_: any, product: any) => {
+      console.log("aa", product);
+      let updateProdct = product;
+      const price = product.product_price || 0;
+      const qty = updateProdct.qty || 0;
+      return <p>$ {(price * qty).toFixed(2)}</p>;
+    },
   },
 ];

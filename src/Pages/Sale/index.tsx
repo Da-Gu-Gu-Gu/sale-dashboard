@@ -8,10 +8,12 @@ import { useEffect } from "react";
 import useSalesList from "../../api/useSales";
 
 const Sale = () => {
-  const { sales, getSales } = useSalesList();
+  const { sales, getSales, loading } = useSalesList();
   useEffect(() => {
     getSales();
-  }, []);
+  }, [loading]);
+
+  console.log(sales);
 
   return (
     <div>
@@ -24,7 +26,12 @@ const Sale = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={sales} columns={columnsData} />
+        <Table
+          rowKey="id"
+          loading={loading}
+          dataSource={sales}
+          columns={columnsData}
+        />
       </div>
     </div>
   );

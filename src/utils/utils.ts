@@ -5,3 +5,5 @@ export function toQueryString(obj: Record<string, any>) {
   }
   return queries.join("&");
 }
+
+export const dateFormat = "YYYY/MM/DD";

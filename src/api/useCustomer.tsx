@@ -8,6 +8,7 @@ const useCustomerList = () => {
       const response = await fetch(`${customerUrl}`);
       const customer = await response.json();
       setCustomers(customer);
+      return true;
     } catch (error) {
       console.error("Error fetching orders with customer data:", error);
     }

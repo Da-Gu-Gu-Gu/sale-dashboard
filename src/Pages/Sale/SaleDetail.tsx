@@ -4,31 +4,97 @@ import { Button, DatePicker, Table } from "antd";
 import { saleDetailColumnData } from "../../datas/tabledatas/sale";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSales } from "../../api/useSales";
+import { useSales, useUpdateSale } from "../../api/useSales";
 import CustomerDropDown from "../../Components/CustomerDropDown";
-
 import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
+import { dateFormat } from "../../utils/utils";
+
 const SaleDetail = () => {
-  const params = useParams();
-  const { id } = params;
-  const { sale, getSale } = useSales();
+  const { loading: updateLoading, updateSaleInvoice } = useUpdateSale();
+  const [saleDetail, setSaleDetail] = useState<any>({});
   const [isEdit, setIsEdit] = useState(false);
+  const { id } = useParams();
+  const { sale, getSale, loading } = useSales();
+  const [customerId, setCustomerId] = useState();
+  const [channelId, setChannelId] = useState();
+  const [date, setDate] = useState();
+
   useEffect(() => {
     getSale(id);
-  }, [id]);
-  console.log(sale);
+  }, [id, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      setSaleDetail(sale);
+      setCustomerId(sale?.customer?.id);
+      setChannelId(sale?.channel?.id);
+      setDate(sale?.sale?.date);
+    }
+  }, [loading, sale]);
+
+  const handleQtyChange = (id: number, newQty: number) => {
+    const updatedOrderProducts = saleDetail?.sale?.orderProducts.map(
+      (item: any) => (item.productId === id ? { ...item, qty: newQty } : item)
+    );
+
+    setSaleDetail((prevState: any) => ({
+      ...prevState,
+      sale: {
+        ...prevState.sale,
+        orderProducts: updatedOrderProducts,
+      },
+    }));
+  };
+
+  const calculateGrandTotal = () => {
+    const products = saleDetail?.sale?.orderProducts || [];
+    return products
+      .reduce((total: number, product: any) => {
+        return total + product.product_price * product.qty;
+      }, 0)
+      .toFixed(2);
+  };
+
+  const updateSaleInvoiceHandler = () => {
+    const payload = {
+      ...saleDetail.sale,
+      customerId: Number(customerId),
+      channelId: Number(channelId),
+      id: Number(id),
+      total: calculateGrandTotal(),
+      date: date,
+    };
+    updateSaleInvoice(Number(id), payload);
+  };
+
+  const makeSaleInvoice = () => {
+    const payload = {
+      ...saleDetail.sale,
+      customerId: Number(customerId),
+      channelId: Number(channelId),
+      id: Number(id),
+      status: true,
+      total: calculateGrandTotal(),
+      date: date,
+    };
+    updateSaleInvoice(Number(id), payload);
+  };
+
+  console.log(saleDetail, customerId, date);
 
   return (
     <div>
       <div className="flex justify-between items-center">
         <BackButton />
-
         <div className="gap-3 flex">
           <Button
+            loading={updateLoading}
             type={isEdit ? "primary" : "dashed"}
             size="middle"
             className="w-[100px]"
+            disabled={saleDetail?.sale?.status}
             onClick={() => {
+              isEdit && updateSaleInvoiceHandler();
               setIsEdit(!isEdit);
             }}
           >
@@ -37,51 +103,74 @@ const SaleDetail = () => {
           <Button
             type="primary"
             size="middle"
+            disabled={saleDetail?.sale?.status}
+            onClick={() => makeSaleInvoice()}
             className="bg-green-400 text-md hover:bg-green-300"
           >
             Make Invoice
           </Button>
         </div>
       </div>
+
       <div className="w-full">
         <div className="flex p-5 w-full justify-between items-center">
-          <div className=" w-1/5 min-w-max flex flex-col gap-3  ">
+          <div className="w-1/5 min-w-max flex flex-col gap-3">
             <p className="">Customer Info</p>
-
-            <div className="flex  gap-5 ">
+            <div className="flex gap-5">
               <div className="flex items-center gap-2 font-semibold text-md">
                 <UserOutlined className="text-lg text-blue-500 font-bold" />
-                <CustomerDropDown data={sale?.customer} />
+                <CustomerDropDown
+                  disable={!isEdit}
+                  setCustomerId={setCustomerId}
+                  data={saleDetail?.customer}
+                />
               </div>
             </div>
           </div>
           <div className="flex gap-5">
             <div>
-              <p className=" pb-1">Sale Channel</p>
-              <SaleChannelDropDown data={sale?.channel} />
+              <p className="pb-1">Sale Channel</p>
+              <SaleChannelDropDown
+                disable={!isEdit}
+                setChannelId={setChannelId}
+                data={saleDetail?.channel}
+              />
             </div>
             <div>
-              <p className=" pb-1">Date</p>
+              <p className="pb-1">Date</p>
               <DatePicker
-                defaultValue={sale?.date}
-                disabled={isEdit ? false : true}
-                onChange={() => {}}
+                defaultValue={date}
+                disabled={!isEdit}
+                format={dateFormat}
+                onChange={(v) => {
+                  if (v) {
+                    setDate(v);
+                  } else {
+                    setDate("");
+                  }
+                }}
               />
             </div>
           </div>
         </div>
-        {/* products */}
+
         <div className="px-5 py-3">
           <p className="text-xl py-2">Products List</p>
           <Table
             pagination={false}
-            dataSource={sale?.products}
-            columns={saleDetailColumnData}
+            loading={loading}
+            rowKey="productId"
+            dataSource={saleDetail?.sale?.orderProducts}
+            // columns={saleDetailColumnData([], handleQtyChange)}
+            columns={saleDetailColumnData(
+              saleDetail?.sale?.orderProducts,
+              handleQtyChange
+            )}
           />
           <div>
             <div className="float-right flex justify-between px-5 py-3 w-[300px] bg-blue-400">
               <p className="text-white font-semibold">Grand Total </p>
-              <p className="text-white font-bold">$123232</p>
+              <p className="text-white font-bold">${calculateGrandTotal()}</p>
             </div>
           </div>
         </div>

@@ -2,13 +2,12 @@ import { Select } from "antd";
 import useCustomerList from "../api/useCustomer";
 import { useEffect } from "react";
 
-const CustomerDropDown = ({ data }: { data: any }) => {
+const CustomerDropDown = ({ data, disable, setCustomerId }: any) => {
   const { customers, getCustomerList } = useCustomerList();
   useEffect(() => {
     getCustomerList();
   }, [data]);
 
-  console.log(data?.id);
   const options = customers?.map((x: any) => {
     return {
       label: (
@@ -21,11 +20,17 @@ const CustomerDropDown = ({ data }: { data: any }) => {
   });
 
   return (
-    <Select
-      defaultValue={data ? data.id : 1}
-      options={options}
-      className="w-[200px]"
-    />
+    <>
+      {data && (
+        <Select
+          defaultValue={data?.id ?? "1"}
+          options={options}
+          disabled={disable}
+          onChange={(value) => setCustomerId(value)}
+          className="w-[200px]"
+        />
+      )}
+    </>
   );
 };
 

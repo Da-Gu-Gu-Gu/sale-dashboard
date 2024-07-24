@@ -13,6 +13,8 @@ import CustomerCreate from "../Pages/Customer/CustomerCreate";
 import CustomerDetail from "../Pages/Customer/CustomerDetail";
 import ProductCreate from "../Pages/Product/ProductCreate";
 import ProductDetail from "../Pages/Product/ProductDetail";
+import ChannelCreate from "../Pages/Channel/ChannelCreate";
+import ChannelDetail from "../Pages/Channel/ChannelDetail";
 
 const AppRouter = () => {
   return (
@@ -32,6 +34,9 @@ const AppRouter = () => {
           <Route path={paths.productDetail} element={<ProductDetail />} />
 
           <Route path={paths.channel} element={<SaleChannel />} />
+          <Route path={paths.channelCreate} element={<ChannelCreate />} />
+          <Route path={paths.channelDetail} element={<ChannelDetail />} />
+
           <Route path={paths.payment} element={<Payments />} />
         </Route>
       </Routes>

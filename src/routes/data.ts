@@ -12,5 +12,8 @@ export const paths = {
   productCreate: "/products/create",
 
   channel: "salechannels",
+  channelCreate: "/salechannels/create",
+  channelDetail: "/salechannels/:id",
+
   payment: "paymentmethods",
 };

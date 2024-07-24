@@ -1,5 +1,36 @@
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
-import { Space } from "antd";
+import { Button, Modal, Space } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useDeleteChannel } from "../../api/useSaleChannel";
+
+const ChannelActions = ({ channel }: any) => {
+  const { deleteChannel } = useDeleteChannel();
+  const navigate = useNavigate();
+  const warning = () => {
+    Modal.warning({
+      title: "Would you Delete this Channel?",
+      // content: "some messages...some messages...",
+      onOk: () => {
+        deleteChannel(channel.id);
+        navigate("/salechannels");
+      },
+    });
+  };
+
+  return (
+    <Space size="middle" onClick={() => console.log(channel)}>
+      <Link to={`/salechannels/${channel.id}`}>
+        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+      </Link>
+      <Button
+        onClick={warning}
+        icon={
+          <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
+        }
+      />
+    </Space>
+  );
+};
 
 export const columnData = [
   {
@@ -10,34 +41,6 @@ export const columnData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, sale: any) => (
-      <Space size="middle" onClick={() => console.log(sale)}>
-        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
-        <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
-      </Space>
-    ),
-  },
-];
-
-export const dataSource = [
-  {
-    key: 1,
-    channel_id: "CH001",
-    channel_name: "Facebook",
-  },
-  {
-    key: 2,
-    channel_id: "CH002",
-    channel_name: "Website",
-  },
-  {
-    key: 3,
-    channel_id: "CH003",
-    channel_name: "On Ground",
-  },
-  {
-    key: 1,
-    channel_id: "CH004",
-    channel_name: "Telephone",
+    render: (_: any, channel: any) => <ChannelActions channel={channel} />,
   },
 ];

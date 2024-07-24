@@ -11,6 +11,8 @@ import SaleDetail from "../Pages/Sale/SaleDetail";
 import CreateSale from "../Pages/Sale/SaleCreate";
 import CustomerCreate from "../Pages/Customer/CustomerCreate";
 import CustomerDetail from "../Pages/Customer/CustomerDetail";
+import ProductCreate from "../Pages/Product/ProductCreate";
+import ProductDetail from "../Pages/Product/ProductDetail";
 
 const AppRouter = () => {
   return (
@@ -24,7 +26,11 @@ const AppRouter = () => {
           <Route path={paths.customer} element={<Customer />} />
           <Route path={paths.customerCreate} element={<CustomerCreate />} />
           <Route path={paths.customerDetail} element={<CustomerDetail />} />
+
           <Route path={paths.product} element={<Products />} />
+          <Route path={paths.productCreate} element={<ProductCreate />} />
+          <Route path={paths.productDetail} element={<ProductDetail />} />
+
           <Route path={paths.channel} element={<SaleChannel />} />
           <Route path={paths.payment} element={<Payments />} />
         </Route>

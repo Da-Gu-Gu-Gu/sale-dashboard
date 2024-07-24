@@ -3,7 +3,38 @@ import {
   DeleteOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
-import { Space } from "antd";
+import { Button, Modal, Space } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useDeleteProduct } from "../../api/useProducts";
+
+const ProductActions = ({ product }: any) => {
+  const { deleteProduct } = useDeleteProduct();
+  const navigate = useNavigate();
+  const warning = () => {
+    Modal.warning({
+      title: "Would you Delete this Product?",
+      // content: "some messages...some messages...",
+      onOk: () => {
+        deleteProduct(product.id);
+        navigate("/products");
+      },
+    });
+  };
+
+  return (
+    <Space size="middle" onClick={() => console.log(product)}>
+      <Link to={`/products/${product.id}`}>
+        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+      </Link>
+      <Button
+        onClick={warning}
+        icon={
+          <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
+        }
+      />
+    </Space>
+  );
+};
 
 export const columnData = [
   {
@@ -42,12 +73,7 @@ export const columnData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, sale: any) => (
-      <Space size="middle" onClick={() => console.log(sale)}>
-        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
-        <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
-      </Space>
-    ),
+    render: (_: any, product: any) => <ProductActions product={product} />,
   },
 ];
 

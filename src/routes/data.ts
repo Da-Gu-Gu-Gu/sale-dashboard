@@ -6,7 +6,11 @@ export const paths = {
   customer: "customers",
   customerDetail: "/customers/:id",
   customerCreate: "/customers/create",
+
   product: "products",
+  productDetail: "/products/:id",
+  productCreate: "/products/create",
+
   channel: "salechannels",
   payment: "paymentmethods",
 };

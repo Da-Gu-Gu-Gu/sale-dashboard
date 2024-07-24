@@ -7,7 +7,7 @@ import BackButton from "../../Components/BackButton";
 const { TextArea } = Input;
 
 const CustomerCreate = () => {
-  const { createCustomer, customer, loading } = useCreateCustomer();
+  const { createCustomer, loading } = useCreateCustomer();
   const [form] = Form.useForm();
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -30,7 +30,7 @@ const CustomerCreate = () => {
       });
 
       form.resetFields();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Validation Failed:", error);
       setFormError(error.message);
     }

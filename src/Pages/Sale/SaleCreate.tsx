@@ -41,7 +41,7 @@ const CreateSale = () => {
 
   const creatSaleHandler = () => {
     const payload = {
-      id: String(3999),
+      // id: String(3999),
       date: date,
       customerId: customerId,
       channelId: channelId,

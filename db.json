@@ -1,63 +1,11 @@
 {
   "sales": [
     {
-      "id": "50",
-      "date": 1721817689574,
-      "customerId": 1,
-      "channelId": 1,
-      "status": true,
-      "orderProducts": [
-        {
-          "id": "2",
-          "product_name": "AA",
-          "product_code": "PROD005",
-          "product_price": 9.99,
-          "product_stock": 5,
-          "product_available": true,
-          "qty": 2,
-          "productId": 2
-        }
-      ],
-      "total": "19.98",
-      "paymentId": "1"
-    },
-    {
       "id": "3999",
-      "date": 1721822659585,
-      "customerId": null,
-      "channelId": 1,
-      "paymentId": "2",
-      "status": false,
-      "orderProducts": [
-        {
-          "id": "2",
-          "product_name": "AA",
-          "product_code": "PROD005",
-          "product_price": 9.99,
-          "product_stock": 5,
-          "product_available": true,
-          "qty": 3,
-          "productId": 2
-        }
-      ],
-      "total": "29.97"
-    },
-    {
-      "id": "3999",
-      "date": 1721833476327,
-      "customerId": null,
+      "date": 1721834333364,
+      "customerId": "0665",
       "channelId": "2",
       "paymentId": "2",
-      "status": false,
-      "orderProducts": [],
-      "total": "0.00"
-    },
-    {
-      "id": "3999",
-      "date": 1721834168393,
-      "customerId": "c4f7",
-      "channelId": "1",
-      "paymentId": "1",
       "status": false,
       "orderProducts": [
         {
@@ -82,6 +30,98 @@
         }
       ],
       "total": "209.98"
+    },
+    {
+      "id": "fed0",
+      "date": 1721834695991,
+      "customerId": "c4f7",
+      "channelId": "2",
+      "paymentId": "2",
+      "status": false,
+      "orderProducts": [],
+      "total": "0.00"
+    },
+    {
+      "id": "63e0",
+      "date": 1721836171486,
+      "customerId": "c4f7",
+      "channelId": "2",
+      "paymentId": "1",
+      "status": false,
+      "orderProducts": [
+        {
+          "id": "2",
+          "product_name": "AA",
+          "product_code": "PROD005",
+          "product_price": 9.99,
+          "product_stock": 5,
+          "product_available": true,
+          "qty": 1,
+          "productId": 2
+        },
+        {
+          "id": "cf1f",
+          "product_name": "My App",
+          "product_code": "P2323",
+          "product_price": 123,
+          "product_stock": 3,
+          "product_available": true,
+          "qty": 3,
+          "productId": null
+        },
+        {
+          "id": "1",
+          "product_name": "Headphones",
+          "product_code": "PROD004",
+          "product_price": 199.99,
+          "product_stock": 5,
+          "product_available": true,
+          "qty": 5,
+          "productId": 1
+        }
+      ],
+      "total": "1378.94"
+    },
+    {
+      "id": "db92",
+      "date": 1721837452154,
+      "customerId": "c4f7",
+      "channelId": "1",
+      "paymentId": "1",
+      "status": false,
+      "orderProducts": [
+        {
+          "id": "cf1f",
+          "product_name": "My App",
+          "product_code": "P2323",
+          "product_price": 123,
+          "product_stock": 3,
+          "product_available": true,
+          "qty": 3,
+          "productId": null
+        },
+        {
+          "product_name": "Thainland",
+          "product_code": "P232323",
+          "product_price": 2323,
+          "product_stock": 2,
+          "product_available": true,
+          "id": "d4d7",
+          "qty": 1,
+          "productId": null
+        },
+        {
+          "id": "cb9e",
+          "product_name": "SDSD",
+          "product_code": "122323",
+          "product_price": 323,
+          "product_stock": 22,
+          "product_available": true,
+          "qty": 1,
+          "productId": null
+        }
+      ],
+      "total": "3015.00"
     }
   ],
   "payments": [
@@ -102,23 +142,37 @@
       "customer_phone": "0610720214",
       "customer_address": "48 Soi Wachiratham Sathit 64, Bang Chak Subdistrict, Sukhumvit Road 101/1 Bang Chak, Phra Khanong,",
       "id": "c4f7"
+    },
+    {
+      "id": "0665",
+      "customer_name": "hello",
+      "customer_phone": "32323",
+      "customer_address": "Yangon"
     }
   ],
   "products": [
     {
-      "id": "1",
-      "product_name": "Headphones",
-      "product_code": "PROD004",
-      "product_price": 199.99,
-      "product_stock": 5,
+      "id": "cf1f",
+      "product_name": "My App",
+      "product_code": "P2323",
+      "product_price": 123,
+      "product_stock": 3,
       "product_available": true
     },
     {
-      "id": "2",
-      "product_name": "AA",
-      "product_code": "PROD005",
-      "product_price": 9.99,
-      "product_stock": 5,
+      "product_name": "Thainland",
+      "product_code": "P232323",
+      "product_price": 2323,
+      "product_stock": 2,
+      "product_available": true,
+      "id": "d4d7"
+    },
+    {
+      "id": "cb9e",
+      "product_name": "SDSD",
+      "product_code": "122323",
+      "product_price": 323,
+      "product_stock": 22,
       "product_available": true
     }
   ],

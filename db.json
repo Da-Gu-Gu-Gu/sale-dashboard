@@ -3,8 +3,8 @@
     {
       "id": "3999",
       "date": 1721834333364,
-      "customerId": "0665",
-      "channelId": "2",
+      "customerId": 665,
+      "channelId": 2,
       "paymentId": "2",
       "status": false,
       "orderProducts": [
@@ -46,7 +46,7 @@
       "date": 1721836171486,
       "customerId": "c4f7",
       "channelId": "2",
-      "paymentId": "1",
+      "paymentId": null,
       "status": false,
       "orderProducts": [
         {
@@ -87,7 +87,7 @@
       "date": 1721837452154,
       "customerId": "c4f7",
       "channelId": null,
-      "paymentId": "1",
+      "paymentId": null,
       "status": false,
       "orderProducts": [
         {
@@ -128,7 +128,7 @@
       "date": 1721839083042,
       "customerId": "0665",
       "channelId": "6809",
-      "paymentId": "1",
+      "paymentId": null,
       "status": false,
       "orderProducts": [
         {
@@ -157,14 +157,24 @@
   ],
   "payments": [
     {
-      "id": "1",
-      "payment_name": "KBank",
-      "payment_account": "12323232"
-    },
-    {
       "id": "2",
       "payment_name": "Bangkok Bank",
       "payment_account": "12323232"
+    },
+    {
+      "id": "e590",
+      "payment_name": "SCB",
+      "payment_account": "232323"
+    },
+    {
+      "payment_name": "B BANK",
+      "payment_account": "232343",
+      "id": "c194"
+    },
+    {
+      "id": "8867",
+      "payment_name": "K Bank",
+      "payment_account": "2323"
     }
   ],
   "customers": [

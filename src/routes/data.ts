@@ -16,4 +16,6 @@ export const paths = {
   channelDetail: "/salechannels/:id",
 
   payment: "paymentmethods",
+  paymentCreate: "/paymentmethods/create",
+  paymentDetial: "/paymentmethods/:id",
 };

@@ -15,6 +15,8 @@ import ProductCreate from "../Pages/Product/ProductCreate";
 import ProductDetail from "../Pages/Product/ProductDetail";
 import ChannelCreate from "../Pages/Channel/ChannelCreate";
 import ChannelDetail from "../Pages/Channel/ChannelDetail";
+import PaymentCreate from "../Pages/Payment/PaymentCreate";
+import PaymentDetail from "../Pages/Payment/PaymentDetail";
 
 const AppRouter = () => {
   return (
@@ -38,6 +40,8 @@ const AppRouter = () => {
           <Route path={paths.channelDetail} element={<ChannelDetail />} />
 
           <Route path={paths.payment} element={<Payments />} />
+          <Route path={paths.paymentCreate} element={<PaymentCreate />} />
+          <Route path={paths.paymentDetial} element={<PaymentDetail />} />
         </Route>
       </Routes>
     </Router>

@@ -1,5 +1,36 @@
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
-import { Space } from "antd";
+import { Button, Modal, Space } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useDeletePayment } from "../../api/usePayments";
+
+const PaymentActions = ({ payment }: any) => {
+  const { deletePayment } = useDeletePayment();
+  const navigate = useNavigate();
+  const warning = () => {
+    Modal.warning({
+      title: "Would you Delete this payment?",
+      // content: "some messages...some messages...",
+      onOk: () => {
+        deletePayment(payment.id);
+        navigate("/paymentmethods");
+      },
+    });
+  };
+
+  return (
+    <Space size="middle" onClick={() => console.log(payment)}>
+      <Link to={`/paymentmethods/${payment.id}`}>
+        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+      </Link>
+      <Button
+        onClick={warning}
+        icon={
+          <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
+        }
+      />
+    </Space>
+  );
+};
 
 export const columnsData = [
   {
@@ -15,32 +46,6 @@ export const columnsData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, payment: any) => (
-      <Space size="middle" onClick={() => console.log(payment)}>
-        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
-        <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
-      </Space>
-    ),
-  },
-];
-
-export const dataSource = [
-  {
-    key: 1,
-    payment_name: "SCB Bank",
-    payment_account: "1234567890",
-    payment_id: "PAY001",
-  },
-  {
-    key: 2,
-    payment_name: "Bangkok Bank",
-    payment_account: "3123123223",
-    payment_id: "PAY002",
-  },
-  {
-    key: 3,
-    payment_name: "K Bank",
-    payment_account: "4237283923",
-    payment_id: "PAY003",
+    render: (_: any, payment: any) => <PaymentActions payment={payment} />,
   },
 ];

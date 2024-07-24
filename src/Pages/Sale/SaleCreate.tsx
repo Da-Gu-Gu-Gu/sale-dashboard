@@ -1,23 +1,14 @@
 import BackButton from "../../Components/BackButton";
 import { UserOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Select, Table } from "antd";
-// import { orderDetailColumnData, orderDetailData } from "../../datas/order";
-import type { SelectProps } from "antd";
-
-import { orderCreateColumnData } from "../../datas/order";
-import { dataSource } from "../../datas/products";
+import { Button, DatePicker, Table } from "antd";
+import { saleCreateColumnData } from "../../datas/tabledatas/sale";
 import { useState } from "react";
+import ProductsDropDown from "../../Components/ProductsDropDown";
+import CustomerDropDown from "../../Components/CustomerDropDown";
 
-const options = dataSource.map((x) => {
-  return {
-    label: x.product_name,
-    value: JSON.stringify(x),
-  };
-});
+import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
 
-console.log(options);
-
-const CreateOrder = () => {
+const CreateSale = () => {
   const [selecteProdcuts, setSelectedProducts] = useState([]);
   console.log(selecteProdcuts);
   return (
@@ -42,32 +33,14 @@ const CreateOrder = () => {
             <div className="flex  gap-5 ">
               <div className="flex items-center gap-2 font-semibold text-md">
                 <UserOutlined className="text-lg text-blue-500 font-bold" />
-                <Select
-                  defaultValue="lucy"
-                  style={{ width: 120 }}
-                  onChange={() => {}}
-                  options={[
-                    { value: "jack", label: "Jack" },
-                    { value: "lucy", label: "Lucy" },
-                    { value: "Yiminghe", label: "yiminghe" },
-                  ]}
-                />
+                <CustomerDropDown />
               </div>
             </div>
           </div>
           <div className="flex gap-5">
             <div>
               <p className=" pb-1">Sale Channel</p>
-              <Select
-                defaultValue="lucy"
-                style={{ width: 120 }}
-                onChange={() => {}}
-                options={[
-                  { value: "jack", label: "Jack" },
-                  { value: "lucy", label: "Lucy" },
-                  { value: "Yiminghe", label: "yiminghe" },
-                ]}
-              />
+              <SaleChannelDropDown />
             </div>
             <div>
               <p className=" pb-1">Date</p>
@@ -78,22 +51,12 @@ const CreateOrder = () => {
         {/* products */}
         <div className="px-5 py-3">
           <p className="text-xl py-2">Products List</p>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Please select"
-            onChange={(value: []) => {
-              const productsArray: any = value.map((item) => JSON.parse(item));
-              setSelectedProducts(productsArray);
-            }}
-            options={options}
-          />
+          <ProductsDropDown setSelectedProducts={setSelectedProducts} />
           <Table
             className="py-3"
             pagination={false}
             dataSource={selecteProdcuts}
-            columns={orderCreateColumnData}
+            columns={saleCreateColumnData}
           />
           <div>
             <div className="float-right flex justify-between px-5 py-3 w-[300px] bg-blue-400">
@@ -107,4 +70,4 @@ const CreateOrder = () => {
   );
 };
 
-export default CreateOrder;
+export default CreateSale;

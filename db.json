@@ -1,0 +1,57 @@
+{
+  "sales":[
+    {
+      "id":1,
+      "customerId":1,
+      "status":true,
+      "channelId":1,
+      "total":399,
+      "date":"2024-05-23"
+    }
+  ],
+  "payments":[
+    {
+      "id":1,
+      "payment_name":"KBank",
+      "payment_account":"12323232"
+    }
+  ],
+  "customers":[
+    {
+      "id": 1,
+      "customer_name": "John Doe",
+      "customer_phone": "123-456-7890",
+      "customer_address": "123 Main St, Springfield, IL"
+    },
+    {
+      "id": 2,
+      "customer_name": "John Doe",
+      "customer_phone": "123-456-7890",
+      "customer_address": "123 Main St, Springfield, IL"
+    }
+  ],
+  "products":[
+    {
+      "id": 1,
+      "product_name": "Headphones",
+      "product_code": "PROD004",
+      "product_price": "$199.99",
+      "product_stock": 5,
+      "product_available": true
+    }
+  ],
+  "channels":[
+    {
+      "id": 1,
+      "channel_name": "Facebook"
+    },
+    {
+      "id": 2,
+      "channel_name": "Website"
+    },
+    {
+      "id": 3,
+      "channel_name": "On Ground"
+    }
+  ]
+}

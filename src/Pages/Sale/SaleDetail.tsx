@@ -1,15 +1,28 @@
 import BackButton from "../../Components/BackButton";
-import { PhoneOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Select, Table } from "antd";
-import { orderDetailColumnData, orderDetailData } from "../../datas/order";
-import { useState } from "react";
-const OrderDetail = () => {
+import { UserOutlined } from "@ant-design/icons";
+import { Button, DatePicker, Table } from "antd";
+import { saleDetailColumnData } from "../../datas/tabledatas/sale";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSales } from "../../api/useSales";
+import CustomerDropDown from "../../Components/CustomerDropDown";
+
+import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
+const SaleDetail = () => {
+  const params = useParams();
+  const { id } = params;
+  const { sale, getSale } = useSales();
   const [isEdit, setIsEdit] = useState(false);
+  useEffect(() => {
+    getSale(id);
+  }, [id]);
+  console.log(sale);
 
   return (
     <div>
       <div className="flex justify-between items-center">
         <BackButton />
+
         <div className="gap-3 flex">
           <Button
             type={isEdit ? "primary" : "dashed"}
@@ -38,32 +51,19 @@ const OrderDetail = () => {
             <div className="flex  gap-5 ">
               <div className="flex items-center gap-2 font-semibold text-md">
                 <UserOutlined className="text-lg text-blue-500 font-bold" />
-                <p>Hein Htet Aung</p>
-              </div>
-              <div className="flex items-center gap-2 font-semibold text-md">
-                <PhoneOutlined className="text-lg text-blue-500" />
-                <p>083232323</p>
+                <CustomerDropDown data={sale?.customer} />
               </div>
             </div>
           </div>
           <div className="flex gap-5">
             <div>
               <p className=" pb-1">Sale Channel</p>
-              <Select
-                defaultValue="lucy"
-                style={{ width: 120 }}
-                onChange={() => {}}
-                disabled={isEdit ? false : true}
-                options={[
-                  { value: "jack", label: "Jack" },
-                  { value: "lucy", label: "Lucy" },
-                  { value: "Yiminghe", label: "yiminghe" },
-                ]}
-              />
+              <SaleChannelDropDown data={sale?.channel} />
             </div>
             <div>
               <p className=" pb-1">Date</p>
               <DatePicker
+                defaultValue={sale?.date}
                 disabled={isEdit ? false : true}
                 onChange={() => {}}
               />
@@ -75,8 +75,8 @@ const OrderDetail = () => {
           <p className="text-xl py-2">Products List</p>
           <Table
             pagination={false}
-            dataSource={orderDetailData}
-            columns={orderDetailColumnData}
+            dataSource={sale?.products}
+            columns={saleDetailColumnData}
           />
           <div>
             <div className="float-right flex justify-between px-5 py-3 w-[300px] bg-blue-400">
@@ -90,4 +90,4 @@ const OrderDetail = () => {
   );
 };
 
-export default OrderDetail;
+export default SaleDetail;

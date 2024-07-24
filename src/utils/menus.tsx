@@ -29,8 +29,8 @@ function getItem(
 }
 
 const menus: MenuItem[] = [
-  getItem("Orders", "1", paths.order, <ShoppingOutlined />),
-  getItem("Sale Invoice", "2", paths.sale, <ShoppingOutlined />),
+  getItem("Sales", "1", paths.sale, <ShoppingOutlined />),
+
   getItem("Customers", "3", paths.customer, <UserOutlined />),
   getItem("Products", "4", paths.product, <ProductOutlined />),
   getItem("Sale Channels", "5", paths.channel, <CompressOutlined />),

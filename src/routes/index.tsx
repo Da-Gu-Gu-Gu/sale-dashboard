@@ -1,24 +1,24 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Sale from "../Pages/Sale";
+
 import { paths } from "./data";
 import DashboardLayout from "../Layout/DashboardLayout";
-import Order from "../Pages/Order";
+import Sale from "../Pages/Sale";
 import Customer from "../Pages/Customer";
 import Products from "../Pages/Product";
 import SaleChannel from "../Pages/Channel";
 import Payments from "../Pages/Payment";
-import OrderDetail from "../Pages/Order/OrderDetail";
-import CreateOrder from "../Pages/Order/OrderCreate";
+import SaleDetail from "../Pages/Sale/SaleDetail";
+import CreateSale from "../Pages/Sale/SaleCreate";
+
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
-          <Route path={paths.order} element={<Order />} />
-          <Route path={paths.orderDetail} element={<OrderDetail />} />
-          <Route path={paths.orderCreate} element={<CreateOrder />} />
-
           <Route path={paths.sale} element={<Sale />} />
+          <Route path={paths.saleDetail} element={<SaleDetail />} />
+          <Route path={paths.saleCreate} element={<CreateSale />} />
+
           <Route path={paths.customer} element={<Customer />} />
           <Route path={paths.product} element={<Products />} />
           <Route path={paths.channel} element={<SaleChannel />} />

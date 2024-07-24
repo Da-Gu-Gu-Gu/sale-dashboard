@@ -1,8 +1,8 @@
 export const paths = {
-  order: "",
-  orderDetail: "/orderdetail",
-  orderCreate: "/ordercreate",
-  sale: "sales",
+  sale: "",
+  saleDetail: "/sale/:id",
+  saleCreate: "/createsale",
+
   customer: "customers",
   product: "products",
   channel: "salechannels",

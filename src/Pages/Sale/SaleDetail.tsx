@@ -1,23 +1,28 @@
 import BackButton from "../../Components/BackButton";
 import { UserOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Table } from "antd";
+import { Alert, Button, DatePicker, Table } from "antd";
 import { saleDetailColumnData } from "../../datas/tabledatas/sale";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSales, useUpdateSale } from "../../api/useSales";
 import CustomerDropDown from "../../Components/CustomerDropDown";
 import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
 import { dateFormat } from "../../utils/utils";
+import { paths } from "../../routes/data";
+import PaymentDropDown from "../../Components/PaymentDropDown";
 
 const SaleDetail = () => {
   const { loading: updateLoading, updateSaleInvoice } = useUpdateSale();
+  const [alertVisible, setAlertVisible] = useState(false);
   const [saleDetail, setSaleDetail] = useState<any>({});
   const [isEdit, setIsEdit] = useState(false);
   const { id } = useParams();
   const { sale, getSale, loading } = useSales();
   const [customerId, setCustomerId] = useState();
   const [channelId, setChannelId] = useState();
+  const [paymentId, setPaymentId] = useState();
   const [date, setDate] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getSale(id);
@@ -28,6 +33,7 @@ const SaleDetail = () => {
       setSaleDetail(sale);
       setCustomerId(sale?.customer?.id);
       setChannelId(sale?.channel?.id);
+      setPaymentId(sale?.payment?.id);
       setDate(sale?.sale?.date);
     }
   }, [loading, sale]);
@@ -65,6 +71,10 @@ const SaleDetail = () => {
       date: date,
     };
     updateSaleInvoice(Number(id), payload);
+    setAlertVisible(true);
+    setTimeout(() => {
+      setAlertVisible(false);
+    }, 3000);
   };
 
   const makeSaleInvoice = () => {
@@ -78,12 +88,29 @@ const SaleDetail = () => {
       date: date,
     };
     updateSaleInvoice(Number(id), payload);
+    setAlertVisible(true);
+
+    setTimeout(() => {
+      setAlertVisible(false);
+      navigate("/");
+    }, 500);
   };
 
   console.log(saleDetail, customerId, date);
 
   return (
-    <div>
+    <div className="relative">
+      <div className="w-full flex justify-center absolute top-0 left-1/2 -translate-x-1/2">
+        {alertVisible && (
+          <Alert
+            className=" w-[150px]"
+            type="success"
+            message={"Success"}
+            closable
+            showIcon
+          />
+        )}
+      </div>
       <div className="flex justify-between items-center">
         <BackButton />
         <div className="gap-3 flex">
@@ -128,6 +155,14 @@ const SaleDetail = () => {
             </div>
           </div>
           <div className="flex gap-5">
+            <div>
+              <p className="pb-1">Payment Methods</p>
+              <PaymentDropDown
+                disable={!isEdit}
+                setPaymentId={setPaymentId}
+                data={saleDetail?.payment}
+              />
+            </div>
             <div>
               <p className="pb-1">Sale Channel</p>
               <SaleChannelDropDown

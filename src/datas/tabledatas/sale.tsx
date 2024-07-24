@@ -8,7 +8,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 const SaleActions = ({ sale }: any) => {
-  const { loading, deleteSaleInvoice } = useDeleteSale();
+  const { deleteSaleInvoice } = useDeleteSale();
   const navigate = useNavigate();
   const warning = () => {
     Modal.warning({
@@ -16,7 +16,7 @@ const SaleActions = ({ sale }: any) => {
       // content: "some messages...some messages...",
       onOk: () => {
         deleteSaleInvoice(sale.id);
-        navigate(paths.sale);
+        navigate("/");
       },
     });
   };

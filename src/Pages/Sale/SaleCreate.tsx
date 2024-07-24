@@ -1,6 +1,6 @@
 import BackButton from "../../Components/BackButton";
 import { UserOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Table } from "antd";
+import { Alert, Button, DatePicker, Table } from "antd";
 import { saleCreateColumnData } from "../../datas/tabledatas/sale";
 import { useState } from "react";
 import ProductsDropDown from "../../Components/ProductsDropDown";
@@ -8,13 +8,18 @@ import CustomerDropDown from "../../Components/CustomerDropDown";
 
 import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
 import { useCreateSale } from "../../api/useSales";
+import { useNavigate } from "react-router-dom";
+import PaymentDropDown from "../../Components/PaymentDropDown";
 
 const CreateSale = () => {
   const [selecteProdcuts, setSelectedProducts] = useState([]);
+  const [alertVisible, setAlertVisible] = useState(false);
   const [date, setDate] = useState(Date.now());
   const [customerId, setCustomerId] = useState("1");
   const [channelId, setChannelId] = useState("1");
+  const [paymentId, setPaymentId] = useState("1");
   const { loading, createSaleInvoice } = useCreateSale();
+  const navigate = useNavigate();
 
   console.log(selecteProdcuts);
 
@@ -40,17 +45,35 @@ const CreateSale = () => {
       date: date,
       customerId: customerId,
       channelId: channelId,
+      paymentId: paymentId,
       status: false,
       orderProducts: selecteProdcuts,
       total: calculateGrandTotal(),
     };
     console.log(payload);
     createSaleInvoice(payload);
+    setAlertVisible(true);
+
+    setTimeout(() => {
+      setAlertVisible(false);
+      navigate("/");
+    }, 500);
   };
 
   console.log(selecteProdcuts);
   return (
-    <div>
+    <div className="relative">
+      <div className="w-full flex justify-center absolute top-0 left-1/2 -translate-x-1/2">
+        {alertVisible && (
+          <Alert
+            className=" w-[150px]"
+            type="success"
+            message={"Success"}
+            closable
+            showIcon
+          />
+        )}
+      </div>
       <div className="flex justify-between items-center">
         <BackButton />
         <div className="gap-3 flex">
@@ -78,6 +101,10 @@ const CreateSale = () => {
             </div>
           </div>
           <div className="flex gap-5">
+            <div>
+              <p className="pb-1">Payment Methods</p>
+              <PaymentDropDown setPaymentId={setPaymentId} data={{}} />
+            </div>
             <div>
               <p className=" pb-1">Sale Channel</p>
               <SaleChannelDropDown setChannelId={setChannelId} data={{}} />

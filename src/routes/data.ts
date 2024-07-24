@@ -4,6 +4,8 @@ export const paths = {
   saleCreate: "/createsale",
 
   customer: "customers",
+  customerDetail: "/customers/:id",
+  customerCreate: "/customers/create",
   product: "products",
   channel: "salechannels",
   payment: "paymentmethods",

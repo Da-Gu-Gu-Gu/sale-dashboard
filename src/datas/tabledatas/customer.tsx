@@ -1,5 +1,36 @@
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
-import { Space } from "antd";
+import { Button, Modal, Space } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useDeleteCustomer } from "../../api/useCustomer";
+
+const CustomerAction = ({ customer }: any) => {
+  const { deleteCustomer } = useDeleteCustomer();
+  const navigate = useNavigate();
+  const warning = () => {
+    Modal.warning({
+      title: "Would you Delete this Customer?",
+      // content: "some messages...some messages...",
+      onOk: () => {
+        deleteCustomer(customer.id);
+        navigate("/customers");
+      },
+    });
+  };
+
+  return (
+    <Space size="middle" onClick={() => console.log(customer)}>
+      <Link to={`/customers/${customer.id}`}>
+        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
+      </Link>
+      <Button
+        onClick={warning}
+        icon={
+          <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
+        }
+      />
+    </Space>
+  );
+};
 
 export const columnData = [
   {
@@ -20,12 +51,7 @@ export const columnData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, customer: any) => (
-      <Space size="middle" onClick={() => console.log(customer)}>
-        <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
-        <DeleteOutlined className="cursor-pointer text-lg text-red-700" />
-      </Space>
-    ),
+    render: (_: any, customer: any) => <CustomerAction customer={customer} />,
   },
 ];
 

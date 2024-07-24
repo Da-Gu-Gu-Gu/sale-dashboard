@@ -2,29 +2,43 @@ import { useState } from "react";
 import { salesUrl } from "./endpoints";
 import useCustomerList from "./useCustomer";
 import useSaleChannel from "./useSaleChannel";
+import usePaymentList from "./usePayments";
 
 const useSalesList = () => {
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(true);
   const { customers, getCustomerList } = useCustomerList();
   const { channels, getChannelList } = useSaleChannel();
+  const { payments, getPaymentList } = usePaymentList();
+
   const getSales = async () => {
     try {
       const response = await fetch(`${salesUrl}`);
       const sales = await response.json();
       const isCustommerFetchSuccess = await getCustomerList();
       const isChannelFetchSuccess = await getChannelList();
-      console.log(isCustommerFetchSuccess, isChannelFetchSuccess);
-      if (isCustommerFetchSuccess && isChannelFetchSuccess) {
+      const isPayMentFetchSuccess = await getPaymentList();
+      console.log(
+        isCustommerFetchSuccess,
+        isChannelFetchSuccess,
+        isPayMentFetchSuccess
+      );
+      if (
+        isCustommerFetchSuccess &&
+        isChannelFetchSuccess &&
+        isPayMentFetchSuccess
+      ) {
         const salesWithDetails = sales.map((sale: any) => {
           const customer = customers.find((c: any) => c.id == sale.customerId);
           console.log(customers, customer);
           const channel = channels.find((ch: any) => ch.id == sale.channelId);
+          const payment = payments.find((pay: any) => pay.id == sale.paymentId);
 
           return {
             ...sale,
             customer,
             channel,
+            payment,
           };
         });
         console.log(salesWithDetails);
@@ -52,21 +66,29 @@ export const useSales = () => {
   const [loading, setLoading] = useState(true);
   const { customers, getCustomerList } = useCustomerList();
   const { channels, getChannelList } = useSaleChannel();
+  const { payments, getPaymentList } = usePaymentList();
+
   const getSale = async (id: string) => {
     try {
       const response = await fetch(`${salesUrl}?id=${id}`);
       const sale = await response.json();
       const isCustommerFetchSuccess = await getCustomerList();
       const isChannelFetchSuccess = await getChannelList();
-
-      if (isCustommerFetchSuccess && isChannelFetchSuccess) {
+      const isPayMentFetchSuccess = await getPaymentList();
+      if (
+        isCustommerFetchSuccess &&
+        isChannelFetchSuccess &&
+        isPayMentFetchSuccess
+      ) {
         const customer = customers.find((c: any) => c.id == sale[0].customerId);
         const channel = channels.find((ch: any) => ch.id == sale[0].channelId);
+        const payment = payments.find((ch: any) => ch.id == sale[0].paymentId);
 
         const res = {
           sale: sale[0],
           customer,
           channel,
+          payment,
         };
 
         setSale(res);

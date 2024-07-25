@@ -3,16 +3,17 @@ import TitleText from "../../Components/TitleText";
 
 import { columnData } from "../../datas/tabledatas/products";
 import useProducts from "../../api/useProducts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../routes/data";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 const Products = () => {
   const { products, getProdcutList } = useProducts();
+  const [isDeleted, setDeleted] = useState(false);
   useEffect(() => {
     getProdcutList();
-  }, []);
+  }, [isDeleted]);
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -24,7 +25,7 @@ const Products = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={products} columns={columnData} />
+        <Table dataSource={products} columns={columnData(setDeleted)} />
       </div>
     </div>
   );

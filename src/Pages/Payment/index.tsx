@@ -2,17 +2,17 @@ import { Button, Table } from "antd";
 import TitleText from "../../Components/TitleText";
 import { columnsData } from "../../datas/tabledatas/payment";
 import usePaymentList from "../../api/usePayments";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../routes/data";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 const Payments = () => {
   const { payments, getPaymentList } = usePaymentList();
-
+  const [isDeleted, setDeleted] = useState(false);
   useEffect(() => {
     getPaymentList();
-  }, []);
+  }, [isDeleted]);
 
   return (
     <div>
@@ -25,7 +25,7 @@ const Payments = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={payments} columns={columnsData} />
+        <Table dataSource={payments} columns={columnsData(setDeleted)} />
       </div>
     </div>
   );

@@ -1,66 +1,5 @@
 {
-  "sales": [
-    {
-      "id": "81fc",
-      "date": "2024-07-01T17:00:00.000Z",
-      "customerId": "0665",
-      "channelId": "6809",
-      "paymentId": "e590",
-      "status": true,
-      "orderProducts": [],
-      "total": "0.00"
-    },
-    {
-      "id": "0ad7",
-      "date": "2024-07-09T17:00:00.000Z",
-      "customerId": "c4f7",
-      "channelId": "6809",
-      "paymentId": "c194",
-      "status": false,
-      "orderProducts": [
-        {
-          "product_name": "My App",
-          "product_code": "P2323",
-          "product_price": 123,
-          "product_stock": 3,
-          "product_available": true,
-          "id": "cf1f",
-          "qty": 2,
-          "productId": null
-        }
-      ],
-      "total": "246.00"
-    },
-    {
-      "id": "9c54",
-      "date": "2024-07-03T17:00:00.000Z",
-      "customerId": "c4f7",
-      "channelId": "6809",
-      "paymentId": "2",
-      "status": true,
-      "orderProducts": [
-        {
-          "product_name": "Thainland",
-          "product_code": "P232323",
-          "product_price": 2323,
-          "product_stock": 2,
-          "product_available": true,
-          "id": "d4d7",
-          "qty": 1
-        },
-        {
-          "product_name": "My App",
-          "product_code": "P2323",
-          "product_price": 123,
-          "product_stock": 3,
-          "product_available": true,
-          "id": "cf1f",
-          "qty": 1
-        }
-      ],
-      "total": "2446.00"
-    }
-  ],
+  "sales": [],
   "payments": [
     {
       "id": "2",
@@ -91,10 +30,10 @@
       "id": "c4f7"
     },
     {
-      "id": "0665",
       "customer_name": "hello",
       "customer_phone": "32323",
-      "customer_address": "Yangon"
+      "customer_address": "Yangon",
+      "id": "0665"
     },
     {
       "customer_name": " Aung",

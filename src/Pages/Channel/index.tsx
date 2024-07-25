@@ -2,16 +2,17 @@ import { Button, Table } from "antd";
 import TitleText from "../../Components/TitleText";
 import { columnData } from "../../datas/tabledatas/channels";
 import useSaleChannel from "../../api/useSaleChannel";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../routes/data";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 const SaleChannel = () => {
   const { channels, getChannelList } = useSaleChannel();
+  const [isDeleted, setDeleted] = useState(false);
   useEffect(() => {
     getChannelList();
-  }, []);
+  }, [isDeleted]);
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -23,7 +24,7 @@ const SaleChannel = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={channels} columns={columnData} />
+        <Table dataSource={channels} columns={columnData(setDeleted)} />
       </div>
     </div>
   );

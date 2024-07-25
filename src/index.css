@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add this if you need to apply specific styles to nested elements */
+.custom-select .ant-select-selection-item {
+    @apply text-black;
+  }
+  
+  .custom-select.custom-select-disabled .ant-select-selection-item {
+    @apply text-black;
+  }
+  

@@ -105,7 +105,7 @@ const CustomerCreate = () => {
             <Button
               type="primary"
               size="large"
-              className="w-full"
+              className="w-full "
               onClick={createHandler}
               loading={loading}
               icon={<SendOutlined />}

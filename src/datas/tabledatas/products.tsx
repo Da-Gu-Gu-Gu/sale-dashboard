@@ -4,19 +4,22 @@ import {
   EyeOutlined,
 } from "@ant-design/icons";
 import { Button, Modal, Space } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDeleteProduct } from "../../api/useProducts";
 
-const ProductActions = ({ product }: any) => {
+const ProductActions = ({ setDeleted, product }: any) => {
   const { deleteProduct } = useDeleteProduct();
-  const navigate = useNavigate();
   const warning = () => {
-    Modal.warning({
+    Modal.confirm({
       title: "Would you Delete this Product?",
       // content: "some messages...some messages...",
+      onCancel: () => {},
+      cancelText: "No",
+      okText: "Yes",
+      okType: "danger",
       onOk: () => {
         deleteProduct(product.id);
-        navigate("/products");
+        setDeleted(true);
       },
     });
   };
@@ -36,7 +39,7 @@ const ProductActions = ({ product }: any) => {
   );
 };
 
-export const columnData = [
+export const columnData = (setDeleted: any) => [
   {
     title: "Name",
     dataIndex: "product_name",
@@ -73,7 +76,9 @@ export const columnData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, product: any) => <ProductActions product={product} />,
+    render: (_: any, product: any) => (
+      <ProductActions setDeleted={setDeleted} product={product} />
+    ),
   },
 ];
 

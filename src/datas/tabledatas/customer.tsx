@@ -1,18 +1,21 @@
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, Modal, Space } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDeleteCustomer } from "../../api/useCustomer";
 
-const CustomerAction = ({ customer }: any) => {
+const CustomerAction = ({ customer, setDeleted }: any) => {
   const { deleteCustomer } = useDeleteCustomer();
-  const navigate = useNavigate();
+
   const warning = () => {
-    Modal.warning({
+    Modal.confirm({
       title: "Would you Delete this Customer?",
-      // content: "some messages...some messages...",
+      onCancel: () => {},
+      cancelText: "No",
+      okText: "Yes",
+      okType: "danger",
       onOk: () => {
         deleteCustomer(customer.id);
-        navigate("/customers");
+        setDeleted(true);
       },
     });
   };
@@ -32,7 +35,7 @@ const CustomerAction = ({ customer }: any) => {
   );
 };
 
-export const columnData = [
+export const columnData = (setDeleted: any) => [
   {
     title: "Name",
     dataIndex: "customer_name",
@@ -51,7 +54,9 @@ export const columnData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, customer: any) => <CustomerAction customer={customer} />,
+    render: (_: any, customer: any) => (
+      <CustomerAction setDeleted={setDeleted} customer={customer} />
+    ),
   },
 ];
 

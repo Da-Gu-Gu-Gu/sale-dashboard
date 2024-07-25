@@ -25,7 +25,10 @@ const PaymentDropDown = ({ data, disable, setPaymentId }: any) => {
           defaultValue={data?.id ?? null}
           options={options}
           onChange={(value) => setPaymentId(value)}
-          className="w-[150px]"
+          variant={!disable ? "outlined" : "borderless"}
+          className={`w-[150px] ${
+            !disable ? "bg-white !text-blue-300" : "custom-select"
+          }`}
         />
       )}
     </>

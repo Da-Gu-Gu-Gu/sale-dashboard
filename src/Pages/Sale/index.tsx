@@ -4,16 +4,15 @@ import { columnsData } from "../../datas/tabledatas/sale";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { paths } from "../../routes/data";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useSalesList from "../../api/useSales";
 
 const Sale = () => {
   const { sales, getSales, loading } = useSalesList();
+  const [isDeleted, setDeleted] = useState(false);
   useEffect(() => {
     getSales();
-  }, [loading]);
-
-  console.log(sales);
+  }, [loading, isDeleted]);
 
   return (
     <div>
@@ -30,7 +29,7 @@ const Sale = () => {
           rowKey="id"
           loading={loading}
           dataSource={sales}
-          columns={columnsData}
+          columns={columnsData(setDeleted)}
         />
       </div>
     </div>

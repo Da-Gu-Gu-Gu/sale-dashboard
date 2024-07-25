@@ -2,16 +2,17 @@ import { Button, Table } from "antd";
 import TitleText from "../../Components/TitleText";
 import { columnData } from "../../datas/tabledatas/customer";
 import useCustomerList from "../../api/useCustomer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { paths } from "../../routes/data";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 const Customer = () => {
   const { customers, getCustomerList } = useCustomerList();
+  const [isDeleted, setDeleted] = useState(false);
   useEffect(() => {
     getCustomerList();
-  }, []);
+  }, [isDeleted]);
   console.log(customers);
   return (
     <div>
@@ -24,7 +25,7 @@ const Customer = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={customers} columns={columnData} />
+        <Table dataSource={customers} columns={columnData(setDeleted)} />
       </div>
     </div>
   );

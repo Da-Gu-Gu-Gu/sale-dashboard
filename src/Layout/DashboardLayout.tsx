@@ -3,6 +3,7 @@ import Header from "../Components/Header";
 import menus from "../utils/menus";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { CloseCircleOutlined } from "@ant-design/icons";
 
 const { Content, Sider } = Layout;
 
@@ -15,14 +16,18 @@ const DashboardLayout: React.FC = () => {
       <Layout>
         <Sider
           width={200}
-          style={{ background: "#ff00ff" }}
+          style={{ background: "white", paddingTop: 24 }}
           collapsible
+          // className="shadow"
           collapsed={collapsed}
+          trigger={null}
+          onMouseEnter={() => setCollapsed(false)}
+          onMouseLeave={() => setCollapsed(true)}
           onCollapse={(value) => setCollapsed(value)}
         >
           <Menu
             mode="inline"
-            // defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             style={{ height: "100%", borderRight: 0 }}
           >
@@ -36,10 +41,11 @@ const DashboardLayout: React.FC = () => {
         <Layout style={{ padding: "0" }}>
           <Content
             style={{
-              padding: 24,
-              margin: 0,
+              margin: 24,
+              // margin: 0,
               minHeight: 280,
             }}
+            className="bg-white p-5 shadow rounded-xl"
           >
             <Outlet />
           </Content>

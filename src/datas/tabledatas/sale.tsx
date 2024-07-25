@@ -5,18 +5,22 @@ import {
   DeleteOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const SaleActions = ({ sale }: any) => {
+const SaleActions = ({ sale, setDeleted }: any) => {
   const { deleteSaleInvoice } = useDeleteSale();
-  const navigate = useNavigate();
   const warning = () => {
-    Modal.warning({
+    Modal.confirm({
       title: "Would you Delete this sale invoice?",
       // content: "some messages...some messages...",
+      onCancel: () => {},
+      cancelText: "No",
+      okText: "Yes",
+      okType: "danger",
+
       onOk: () => {
         deleteSaleInvoice(sale.id);
-        navigate("/");
+        setDeleted(true);
       },
     });
   };
@@ -35,7 +39,7 @@ const SaleActions = ({ sale }: any) => {
   );
 };
 
-export const columnsData = [
+export const columnsData = (setDeleted: any) => [
   {
     title: "Sale Id",
     dataIndex: "id",
@@ -85,7 +89,7 @@ export const columnsData = [
     title: "Action",
     key: "action",
     render: (_: any, sale: any) => {
-      return <SaleActions sale={sale} />;
+      return <SaleActions sale={sale} setDeleted={setDeleted} />;
     },
   },
 ];

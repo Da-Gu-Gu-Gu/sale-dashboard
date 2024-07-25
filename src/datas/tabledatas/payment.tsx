@@ -1,18 +1,21 @@
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, Modal, Space } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDeletePayment } from "../../api/usePayments";
 
-const PaymentActions = ({ payment }: any) => {
+const PaymentActions = ({ payment, setDeleted }: any) => {
   const { deletePayment } = useDeletePayment();
-  const navigate = useNavigate();
+
   const warning = () => {
-    Modal.warning({
+    Modal.confirm({
       title: "Would you Delete this payment?",
-      // content: "some messages...some messages...",
+      onCancel: () => {},
+      cancelText: "No",
+      okText: "Yes",
+      okType: "danger",
       onOk: () => {
         deletePayment(payment.id);
-        navigate("/paymentmethods");
+        setDeleted(true);
       },
     });
   };
@@ -32,7 +35,7 @@ const PaymentActions = ({ payment }: any) => {
   );
 };
 
-export const columnsData = [
+export const columnsData = (setDeleted: any) => [
   {
     title: "Name",
     dataIndex: "payment_name",
@@ -46,6 +49,8 @@ export const columnsData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, payment: any) => <PaymentActions payment={payment} />,
+    render: (_: any, payment: any) => (
+      <PaymentActions setDeleted={setDeleted} payment={payment} />
+    ),
   },
 ];

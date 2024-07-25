@@ -26,8 +26,11 @@ const CustomerDropDown = ({ data, disable, setCustomerId }: any) => {
           defaultValue={data?.id ?? null}
           options={options}
           disabled={disable}
+          variant={!disable ? "outlined" : "borderless"}
           onChange={(value) => setCustomerId(value)}
-          className="w-[200px]"
+          className={`w-[200px] ${
+            !disable ? "bg-white !text-blue-300" : "custom-select"
+          }`}
         />
       )}
     </>

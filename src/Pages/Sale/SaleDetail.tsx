@@ -1,5 +1,9 @@
 import BackButton from "../../Components/BackButton";
-import { UserOutlined } from "@ant-design/icons";
+import {
+  BankOutlined,
+  CompressOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Alert, Button, DatePicker, Table } from "antd";
 import { saleDetailColumnData } from "../../datas/tabledatas/sale";
 import { useEffect, useState } from "react";
@@ -133,7 +137,9 @@ const SaleDetail = () => {
             size="middle"
             disabled={saleDetail?.sale?.status}
             onClick={() => makeSaleInvoice()}
-            className="bg-green-400 text-md hover:bg-green-300"
+            className={`text-md bg-green-400 ${
+              !saleDetail?.sale?.status && "hover:!bg-green-500"
+            } `}
           >
             Make Invoice
           </Button>
@@ -141,8 +147,8 @@ const SaleDetail = () => {
       </div>
 
       <div className="w-full">
-        <div className="flex p-5 w-full justify-between items-center">
-          <div className="w-1/5 min-w-max flex flex-col gap-3">
+        <div className="flex p-5 w-full  gap-10 items-center">
+          <div className=" min-w-max flex flex-col gap-3">
             <p className="">Customer Info</p>
             <div className="flex gap-5">
               <div className="flex items-center gap-2 font-semibold text-md">
@@ -155,33 +161,43 @@ const SaleDetail = () => {
               </div>
             </div>
           </div>
-          <div className="flex gap-5">
-            <div>
-              <p className="pb-1">Payment Methods</p>
+
+          <div className=" min-w-max flex flex-col gap-3">
+            <p className="pb-1">Payment Methods</p>
+            <div className="flex items-center gap-2 font-semibold text-md">
+              <BankOutlined className="text-lg text-blue-500 font-bold" />
               <PaymentDropDown
                 disable={!isEdit}
                 setPaymentId={setPaymentId}
                 data={saleDetail?.payment}
               />
             </div>
-            <div>
-              <p className="pb-1">Sale Channel</p>
+          </div>
+          <div className=" min-w-max flex flex-col gap-3">
+            <p className="pb-1">Sale Channel</p>
+            <div className="flex items-center gap-2 font-semibold text-md">
+              <CompressOutlined className="text-lg text-blue-500 font-bold" />
               <SaleChannelDropDown
                 disable={!isEdit}
                 setChannelId={setChannelId}
                 data={saleDetail?.channel}
               />
             </div>
-            <div>
-              <p className="pb-1">Date</p>
-              <DatePicker
-                // defaultValue={date}
-                value={dayjs(date)}
-                onChange={(v: any) => {
-                  setDate(v);
-                }}
-              />
-            </div>
+          </div>
+          <div className=" min-w-max flex flex-col gap-3">
+            <p className="pb-1">Date</p>
+            <DatePicker
+              // defaultValue={date}
+              disabled={!isEdit}
+              variant={isEdit ? "outlined" : "borderless"}
+              className={`w-[150px] ${
+                !isEdit ? "bg-white text-black" : "custom-select"
+              }`}
+              value={dayjs(date)}
+              onChange={(v: any) => {
+                setDate(v);
+              }}
+            />
           </div>
         </div>
 

@@ -1,18 +1,22 @@
 import { DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, Modal, Space } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDeleteChannel } from "../../api/useSaleChannel";
 
-const ChannelActions = ({ channel }: any) => {
+const ChannelActions = ({ channel, setDeleted }: any) => {
   const { deleteChannel } = useDeleteChannel();
-  const navigate = useNavigate();
+
   const warning = () => {
-    Modal.warning({
+    Modal.confirm({
       title: "Would you Delete this Channel?",
       // content: "some messages...some messages...",
+      onCancel: () => {},
+      cancelText: "No",
+      okText: "Yes",
+      okType: "danger",
       onOk: () => {
         deleteChannel(channel.id);
-        navigate("/salechannels");
+        setDeleted(true);
       },
     });
   };
@@ -32,7 +36,7 @@ const ChannelActions = ({ channel }: any) => {
   );
 };
 
-export const columnData = [
+export const columnData = (setDeleted: any) => [
   {
     title: "Name",
     dataIndex: "channel_name",
@@ -41,6 +45,8 @@ export const columnData = [
   {
     title: "Action",
     key: "action",
-    render: (_: any, channel: any) => <ChannelActions channel={channel} />,
+    render: (_: any, channel: any) => (
+      <ChannelActions setDeleted={setDeleted} channel={channel} />
+    ),
   },
 ];

@@ -104,7 +104,7 @@ const PaymentDetail = () => {
             <Button
               type="primary"
               size="large"
-              className={`w-full ${isEdit && "bg-green-500"}`}
+              className={`w-full `}
               onClick={isEdit ? updateHandler : () => setIsEdit(true)}
               icon={isEdit ? <SendOutlined /> : <EditOutlined />}
               // loading={loading}

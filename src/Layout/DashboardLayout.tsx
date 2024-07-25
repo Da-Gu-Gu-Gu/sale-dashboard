@@ -44,7 +44,7 @@ const DashboardLayout: React.FC = () => {
               // margin: 0,
               minHeight: 280,
             }}
-            className="bg-white p-5 shadow rounded-xl"
+            className="bg-white p-5  min-h-screen shadow rounded-xl"
           >
             <Outlet />
           </Content>

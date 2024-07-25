@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 import Delivery from "../Pages/Delivery";
 import DeliveryCreate from "../Pages/Delivery/DeliveryCreate";
 import DeliverDetail from "../Pages/Delivery/DeliveryDetail";
+import Home from "../Pages/Charts";
 
 const AppRouter = () => {
   const navigate = useNavigate();
@@ -45,6 +46,8 @@ const AppRouter = () => {
       ) : (
         <>
           <Route path="/" element={<DashboardLayout />}>
+            <Route path={paths.charts} element={<Home />} />
+
             <Route path={paths.sale} element={<Sale />} />
             <Route path={paths.saleDetail} element={<SaleDetail />} />
             <Route path={paths.saleCreate} element={<CreateSale />} />

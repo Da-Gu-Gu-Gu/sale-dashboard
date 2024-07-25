@@ -8,7 +8,7 @@ const LoginPage = () => {
 
   const handleLogin = (values: { email: string; password: string }) => {
     localStorage.setItem("Email", values.email);
-    navigate("/");
+    navigate("/charts");
     // Add login logic here
   };
 

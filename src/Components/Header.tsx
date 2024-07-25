@@ -80,7 +80,7 @@ export default Header;
 const Profile: React.FC = () => (
   <Space size={24} className="cursor-pointer">
     <Badge dot>
-      <Avatar shape="square" icon={<UserOutlined />} />
+      <Avatar className="bg-blue-400" shape="square" icon={<UserOutlined />} />
     </Badge>
   </Space>
 );

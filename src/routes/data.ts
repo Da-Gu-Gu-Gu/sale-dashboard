@@ -1,4 +1,6 @@
 export const paths = {
+  charts: "charts",
+
   sale: "",
   saleDetail: "/sale/:id",
   saleCreate: "/createsale",

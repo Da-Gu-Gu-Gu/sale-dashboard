@@ -14,7 +14,6 @@ const CustomerCreate = () => {
   const createHandler = async () => {
     try {
       const values = await form.validateFields();
-      console.log(values);
 
       const payload = {
         customer_name: values.name,

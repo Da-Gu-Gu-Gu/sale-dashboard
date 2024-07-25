@@ -12,7 +12,6 @@ const ChannelCreate = () => {
   const createHandler = async () => {
     try {
       const values = await form.validateFields();
-      console.log(values);
 
       const payload = {
         channel_name: values.name,

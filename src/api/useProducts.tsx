@@ -119,8 +119,8 @@ export const useDeleteProduct = () => {
         },
       });
       if (response.ok) {
-        const product = await response.json();
-        console.log("deleted", product);
+        await response.json();
+
         setLoading(false);
       } else {
         setLoading(false);

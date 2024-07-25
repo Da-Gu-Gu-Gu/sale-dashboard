@@ -19,7 +19,6 @@ const ProductCreate = () => {
   const createHandler = async () => {
     try {
       const values = await form.validateFields();
-      console.log(values);
 
       const payload = {
         product_name: values.name,

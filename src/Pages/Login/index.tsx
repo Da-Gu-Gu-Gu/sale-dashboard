@@ -7,8 +7,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = (values: { email: string; password: string }) => {
-    console.log("Email:", values.email);
-    console.log("Password:", values.password);
     localStorage.setItem("Email", values.email);
     navigate("/");
     // Add login logic here

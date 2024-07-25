@@ -22,7 +22,7 @@ const ChannelActions = ({ channel, setDeleted }: any) => {
   };
 
   return (
-    <Space size="middle" onClick={() => console.log(channel)}>
+    <Space size="middle">
       <Link to={`/salechannels/${channel.id}`}>
         <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
       </Link>

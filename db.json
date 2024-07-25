@@ -57,6 +57,35 @@
       ],
       "total": "14307.00",
       "channelId": "2"
+    },
+    {
+      "id": "0ef3",
+      "date": "2024-06-30T17:00:00.000Z",
+      "customerId": "0721",
+      "channelId": "ba7c",
+      "paymentId": "c194",
+      "status": false,
+      "orderProducts": [
+        {
+          "product_name": "Thainland",
+          "product_code": "P232323",
+          "product_price": 2323,
+          "product_stock": 2,
+          "product_available": true,
+          "id": "d4d7",
+          "qty": 1
+        },
+        {
+          "product_name": "My App",
+          "product_code": "P2323",
+          "product_price": 123,
+          "product_stock": 3,
+          "product_available": true,
+          "id": "cf1f",
+          "qty": 1
+        }
+      ],
+      "total": "2446.00"
     }
   ],
   "payments": [
@@ -83,7 +112,7 @@
   ],
   "customers": [
     {
-      "customer_name": "Hein Htet ",
+      "customer_name": "Hein  ",
       "customer_phone": "0610720214",
       "customer_address": "48 Soi Wachiratham Sathit 64, Bang Chak Subdistrict, Sukhumvit Road 101/1 Bang Chak, Phra Khanong,",
       "id": "c4f7"
@@ -141,7 +170,7 @@
       "id": "aba6"
     },
     {
-      "channel_name": "Live Sale",
+      "channel_name": "Live Sale AA",
       "id": "ba7c"
     }
   ]

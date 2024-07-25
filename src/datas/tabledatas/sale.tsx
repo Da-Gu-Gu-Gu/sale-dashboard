@@ -25,7 +25,7 @@ const SaleActions = ({ sale, setDeleted }: any) => {
     });
   };
   return (
-    <Space size="middle" onClick={() => console.log(sale)}>
+    <Space size="middle">
       <Link to={`/sale/${sale.id}`}>
         <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
       </Link>
@@ -59,7 +59,7 @@ export const columnsData = (setDeleted: any) => [
     title: "Status",
     key: "status",
     render: (_: any, sale: any) => (
-      <Space size="middle" onClick={() => console.log(sale)}>
+      <Space size="middle">
         <CheckCircleOutlined
           className={`cursor-pointer text-xl ${
             sale.status ? "text-blue-700" : "text-gray-700"
@@ -130,7 +130,6 @@ export const saleDetailColumnData = (data: any, onQtyChange: any) => [
     title: "Sub Total",
     key: "total",
     render: (_: any, product: any) => {
-      console.log("p", product);
       const price = product.product_price || 0;
       const qty = product.qty || 0;
       return <p>$ {(price * qty).toFixed(2)}</p>;
@@ -170,7 +169,6 @@ export const saleCreateColumnData = (data: any, onQtyChange: any) => [
     title: "Sub Total",
     key: "total",
     render: (_: any, product: any) => {
-      console.log("aa", product);
       let updateProdct = product;
       const price = product.product_price || 0;
       const qty = updateProdct.qty || 0;

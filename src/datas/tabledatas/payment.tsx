@@ -21,7 +21,7 @@ const PaymentActions = ({ payment, setDeleted }: any) => {
   };
 
   return (
-    <Space size="middle" onClick={() => console.log(payment)}>
+    <Space size="middle">
       <Link to={`/paymentmethods/${payment.id}`}>
         <EyeOutlined className="cursor-pointer text-lg text-blue-700" />
       </Link>

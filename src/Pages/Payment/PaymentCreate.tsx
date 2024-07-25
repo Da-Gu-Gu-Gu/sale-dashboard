@@ -17,7 +17,6 @@ const PaymentCreate = () => {
   const createHandler = async () => {
     try {
       const values = await form.validateFields();
-      console.log(values);
 
       const payload = {
         payment_name: values.name,

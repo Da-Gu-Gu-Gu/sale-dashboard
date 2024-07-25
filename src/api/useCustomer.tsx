@@ -120,8 +120,8 @@ export const useDeleteCustomer = () => {
         },
       });
       if (response.ok) {
-        const customer = await response.json();
-        console.log("deleted", customer);
+        await response.json();
+
         setLoading(false);
       } else {
         setLoading(false);

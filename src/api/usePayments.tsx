@@ -125,8 +125,8 @@ export const useDeletePayment = () => {
         },
       });
       if (response.ok) {
-        const res = await response.json();
-        console.log("deleted", res);
+        await response.json();
+
         setLoading(false);
       } else {
         setLoading(false);

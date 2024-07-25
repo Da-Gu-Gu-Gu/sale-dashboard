@@ -28,7 +28,6 @@ const ProductsDropDown = ({ selecteProdcuts, setSelectedProducts }: any) => {
       };
     });
 
-    console.log("updatedProductsArray", updatedProductsArray);
     setSelectedProducts(updatedProductsArray);
   };
 
@@ -39,17 +38,6 @@ const ProductsDropDown = ({ selecteProdcuts, setSelectedProducts }: any) => {
       style={{ width: "100%" }}
       placeholder="Please select"
       onChange={handleChange}
-      // value={selecteProdcuts.map((product: any) => JSON.stringify(product))}
-      // onChange={(value: string[]) => {
-      //   const productsArray: any = value.map((item) => JSON.parse(item));
-      //   console.log(productsArray);
-      //   const qtyCheckArray = productsArray.map((p: any) => ({
-      //     ...p,
-      //     qty: p.qty ?? 1,
-      //   }));
-      //   console.log("qtyCheckarray", qtyCheckArray);
-      //   setSelectedProducts(qtyCheckArray);
-      // }}
       options={datas}
     />
   );

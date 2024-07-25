@@ -13,7 +13,7 @@ const Customer = () => {
   useEffect(() => {
     getCustomerList();
   }, [isDeleted]);
-  console.log(customers);
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -25,7 +25,11 @@ const Customer = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={customers} columns={columnData(setDeleted)} />
+        <Table
+          key={"id"}
+          dataSource={customers}
+          columns={columnData(setDeleted)}
+        />
       </div>
     </div>
   );

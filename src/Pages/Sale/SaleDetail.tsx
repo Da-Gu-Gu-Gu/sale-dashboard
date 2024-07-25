@@ -101,8 +101,6 @@ const SaleDetail = () => {
     }, 500);
   };
 
-  console.log(saleDetail, customerId, date);
-
   return (
     <div className="relative">
       <div className="w-full flex justify-center absolute top-0 left-1/2 -translate-x-1/2">

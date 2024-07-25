@@ -18,11 +18,11 @@ const useSalesList = () => {
       const isCustommerFetchSuccess = await getCustomerList();
       const isChannelFetchSuccess = await getChannelList();
       const isPayMentFetchSuccess = await getPaymentList();
-      console.log(
-        isCustommerFetchSuccess,
-        isChannelFetchSuccess,
-        isPayMentFetchSuccess
-      );
+      // console.log(
+      //   isCustommerFetchSuccess,
+      //   isChannelFetchSuccess,
+      //   isPayMentFetchSuccess
+      // );
       if (
         isCustommerFetchSuccess &&
         isChannelFetchSuccess &&
@@ -30,7 +30,7 @@ const useSalesList = () => {
       ) {
         const salesWithDetails = sales.map((sale: any) => {
           const customer = customers.find((c: any) => c.id == sale.customerId);
-          console.log(customers, customer);
+          // console.log(customers, customer);
           const channel = channels.find((ch: any) => ch.id == sale.channelId);
           const payment = payments.find((pay: any) => pay.id == sale.paymentId);
 
@@ -41,7 +41,7 @@ const useSalesList = () => {
             payment,
           };
         });
-        console.log(salesWithDetails);
+        // console.log(salesWithDetails);
         setSales(salesWithDetails);
         setLoading(false);
       }
@@ -122,8 +122,8 @@ export const useUpdateSale = () => {
         body: JSON.stringify(sale),
       });
       if (response.ok) {
-        const updatedSale = await response.json();
-        console.log("update", updatedSale);
+        await response.json();
+        // console.log("update", updatedSale);
         setLoading(false);
       } else {
         setLoading(false);
@@ -154,8 +154,8 @@ export const useCreateSale = () => {
         body: JSON.stringify(sale),
       });
       if (response.ok) {
-        const createdSale = await response.json();
-        console.log("created", createdSale);
+        await response.json();
+
         setLoading(false);
       } else {
         setLoading(false);
@@ -185,8 +185,8 @@ export const useDeleteSale = () => {
         },
       });
       if (response.ok) {
-        const deleteSale = await response.json();
-        console.log("deleted", deleteSale);
+        await response.json();
+
         setLoading(false);
       } else {
         setLoading(false);

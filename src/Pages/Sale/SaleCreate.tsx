@@ -2,6 +2,7 @@ import BackButton from "../../Components/BackButton";
 import {
   BankOutlined,
   CompressOutlined,
+  TruckOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Alert, Button, DatePicker, Table } from "antd";
@@ -15,6 +16,7 @@ import { useCreateSale } from "../../api/useSales";
 import { useNavigate } from "react-router-dom";
 import PaymentDropDown from "../../Components/PaymentDropDown";
 import { Dayjs } from "dayjs";
+import DeliveryDropDown from "../../Components/DeliveryDropDown";
 
 const CreateSale = () => {
   const [selecteProdcuts, setSelectedProducts] = useState([]);
@@ -23,6 +25,7 @@ const CreateSale = () => {
   const [customerId, setCustomerId] = useState("1");
   const [channelId, setChannelId] = useState("1");
   const [paymentId, setPaymentId] = useState("1");
+  const [deliveryId, setDeliveryId] = useState("1");
   const { loading, createSaleInvoice } = useCreateSale();
   const navigate = useNavigate();
 
@@ -47,6 +50,7 @@ const CreateSale = () => {
       customerId: customerId,
       channelId: channelId,
       paymentId: paymentId,
+      deliverId: deliveryId,
       status: false,
       orderProducts: selecteProdcuts,
       total: calculateGrandTotal(),
@@ -112,6 +116,13 @@ const CreateSale = () => {
             <div className="flex items-center gap-2 font-semibold text-md">
               <CompressOutlined className="text-lg text-blue-500 font-bold" />
               <SaleChannelDropDown setChannelId={setChannelId} data={{}} />
+            </div>
+          </div>
+          <div className=" min-w-max flex flex-col gap-3  ">
+            <p className=" pb-1">Delivery Service</p>
+            <div className="flex items-center gap-2 font-semibold text-md">
+              <TruckOutlined className="text-lg text-blue-500 font-bold" />
+              <DeliveryDropDown setDeliveryId={setDeliveryId} data={{}} />
             </div>
           </div>
           <div className=" min-w-max flex flex-col gap-3  ">

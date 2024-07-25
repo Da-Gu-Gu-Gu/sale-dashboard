@@ -19,6 +19,9 @@ import PaymentCreate from "../Pages/Payment/PaymentCreate";
 import PaymentDetail from "../Pages/Payment/PaymentDetail";
 import LoginPage from "../Pages/Login";
 import { useEffect, useState } from "react";
+import Delivery from "../Pages/Delivery";
+import DeliveryCreate from "../Pages/Delivery/DeliveryCreate";
+import DeliverDetail from "../Pages/Delivery/DeliveryDetail";
 
 const AppRouter = () => {
   const navigate = useNavigate();
@@ -57,6 +60,10 @@ const AppRouter = () => {
             <Route path={paths.channel} element={<SaleChannel />} />
             <Route path={paths.channelCreate} element={<ChannelCreate />} />
             <Route path={paths.channelDetail} element={<ChannelDetail />} />
+
+            <Route path={paths.delivery} element={<Delivery />} />
+            <Route path={paths.deliveryCreate} element={<DeliveryCreate />} />
+            <Route path={paths.deliveryDetail} element={<DeliverDetail />} />
 
             <Route path={paths.payment} element={<Payments />} />
             <Route path={paths.paymentCreate} element={<PaymentCreate />} />

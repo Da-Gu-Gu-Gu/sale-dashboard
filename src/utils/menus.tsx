@@ -5,6 +5,7 @@ import {
   ProductOutlined,
   CompressOutlined,
   BankOutlined,
+  TruckOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { paths } from "../routes/data";
@@ -34,7 +35,8 @@ const menus: MenuItem[] = [
   getItem("Customers", "3", paths.customer, <UserOutlined />),
   getItem("Products", "4", paths.product, <ProductOutlined />),
   getItem("Sale Channels", "5", paths.channel, <CompressOutlined />),
-  getItem("Payments Methods", "6", paths.payment, <BankOutlined />),
+  getItem("Delivery", "6", paths.delivery, <TruckOutlined />),
+  getItem("Payments Methods", "7", paths.payment, <BankOutlined />),
 ];
 
 export default menus;

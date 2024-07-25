@@ -1,70 +1,43 @@
 {
   "sales": [
     {
-      "id": "31e5",
-      "date": "2024-07-24T17:00:00.000Z",
-      "customerId": "c4f7",
-      "channelId": "6809",
-      "paymentId": "2",
-      "status": false,
-      "orderProducts": [
-        {
-          "product_name": "Thainland",
-          "product_code": "P232323",
-          "product_price": 2323,
-          "product_stock": 2,
-          "product_available": true,
-          "id": "d4d7",
-          "qty": 5
-        },
-        {
-          "product_name": "My App",
-          "product_code": "P2323",
-          "product_price": 123,
-          "product_stock": 3,
-          "product_available": true,
-          "id": "cf1f",
-          "qty": 5
-        }
-      ],
-      "total": "12230.00"
-    },
-    {
-      "id": "c929",
-      "date": "2024-07-14T17:00:00.000Z",
-      "customerId": "0665",
-      "paymentId": "e590",
-      "status": false,
-      "orderProducts": [
-        {
-          "product_name": "Thainland",
-          "product_code": "P232323",
-          "product_price": 2323,
-          "product_stock": 2,
-          "product_available": true,
-          "id": "d4d7",
-          "qty": 6
-        },
-        {
-          "product_name": "My App",
-          "product_code": "P2323",
-          "product_price": 123,
-          "product_stock": 3,
-          "product_available": true,
-          "id": "cf1f",
-          "qty": 3
-        }
-      ],
-      "total": "14307.00",
-      "channelId": "2"
-    },
-    {
-      "id": "0ef3",
+      "id": "9ce4",
       "date": "2024-06-30T17:00:00.000Z",
-      "customerId": "0721",
-      "channelId": "ba7c",
-      "paymentId": "c194",
+      "customerId": "c4f7",
+      "channelId": "2",
+      "paymentId": "2",
+      "deliverId": "2",
       "status": false,
+      "orderProducts": [
+        {
+          "product_name": "My App",
+          "product_code": "P2323",
+          "product_price": 123,
+          "product_stock": 3,
+          "product_available": true,
+          "id": "cf1f",
+          "qty": 1
+        },
+        {
+          "product_name": "Thainland",
+          "product_code": "P232323",
+          "product_price": 2323,
+          "product_stock": 2,
+          "product_available": true,
+          "id": "d4d7",
+          "qty": 1
+        }
+      ],
+      "total": "2446.00"
+    },
+    {
+      "id": "ba99",
+      "date": "2024-07-30T17:00:00.000Z",
+      "customerId": "0665",
+      "channelId": "2",
+      "paymentId": "2",
+      "deliverId": "7518",
+      "status": true,
       "orderProducts": [
         {
           "product_name": "Thainland",
@@ -172,6 +145,16 @@
     {
       "channel_name": "Live Sale AA",
       "id": "ba7c"
+    }
+  ],
+  "deliver": [
+    {
+      "deliver_name": "NinjaVan",
+      "id": "2"
+    },
+    {
+      "id": "7518",
+      "deliver_name": "Dee"
     }
   ]
 }

@@ -2,6 +2,7 @@ import BackButton from "../../Components/BackButton";
 import {
   BankOutlined,
   CompressOutlined,
+  TruckOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Alert, Button, DatePicker, Table } from "antd";
@@ -13,6 +14,7 @@ import CustomerDropDown from "../../Components/CustomerDropDown";
 import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
 import PaymentDropDown from "../../Components/PaymentDropDown";
 import dayjs from "dayjs";
+import DeliveryDropDown from "../../Components/DeliveryDropDown";
 
 const SaleDetail = () => {
   const { loading: updateLoading, updateSaleInvoice } = useUpdateSale();
@@ -24,6 +26,7 @@ const SaleDetail = () => {
   const [customerId, setCustomerId] = useState();
   const [channelId, setChannelId] = useState();
   const [paymentId, setPaymentId] = useState();
+  const [deliverId, setDeliveryId] = useState();
   const [date, setDate] = useState();
   const navigate = useNavigate();
 
@@ -37,6 +40,7 @@ const SaleDetail = () => {
       setCustomerId(sale?.customer?.id);
       setChannelId(sale?.channel?.id);
       setPaymentId(sale?.payment?.id);
+      setDeliveryId(sale?.deliver?.id);
       setDate(sale?.sale?.date);
     }
   }, [loading, sale]);
@@ -70,6 +74,7 @@ const SaleDetail = () => {
       customerId: customerId,
       channelId: channelId,
       paymentId: paymentId,
+      deliverId: deliverId,
       // id: id,
       total: calculateGrandTotal(),
       date: date,
@@ -179,6 +184,17 @@ const SaleDetail = () => {
                 disable={!isEdit}
                 setChannelId={setChannelId}
                 data={saleDetail?.channel}
+              />
+            </div>
+          </div>
+          <div className=" min-w-max flex flex-col gap-3  ">
+            <p className=" pb-1">Delivery Service</p>
+            <div className="flex items-center gap-2 font-semibold text-md">
+              <TruckOutlined className="text-lg text-blue-500 font-bold" />
+              <DeliveryDropDown
+                disable={!isEdit}
+                setDeliveryId={setDeliveryId}
+                data={saleDetail?.deliver}
               />
             </div>
           </div>

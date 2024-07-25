@@ -5,3 +5,4 @@ export const customerUrl = `${port}/customers`;
 export const channelUrl = `${port}/channels`;
 export const productsUrl = `${port}/products`;
 export const paymentsUrl = `${port}/payments`;
+export const deliveryUrl = `${port}/deliver`;

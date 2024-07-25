@@ -3,6 +3,7 @@ import { salesUrl } from "./endpoints";
 import useCustomerList from "./useCustomer";
 import useSaleChannel from "./useSaleChannel";
 import usePaymentList from "./usePayments";
+import useDelivery from "./useDeliver";
 
 const useSalesList = () => {
   const [sales, setSales] = useState([]);
@@ -67,6 +68,7 @@ export const useSales = () => {
   const { customers, getCustomerList } = useCustomerList();
   const { channels, getChannelList } = useSaleChannel();
   const { payments, getPaymentList } = usePaymentList();
+  const { delivery, getDeliverList } = useDelivery();
 
   const getSale = async (id: string) => {
     try {
@@ -75,18 +77,22 @@ export const useSales = () => {
       const isCustommerFetchSuccess = await getCustomerList();
       const isChannelFetchSuccess = await getChannelList();
       const isPayMentFetchSuccess = await getPaymentList();
+      const isDeliveryFetchSuccess = await getDeliverList();
       if (
         isCustommerFetchSuccess &&
         isChannelFetchSuccess &&
-        isPayMentFetchSuccess
+        isPayMentFetchSuccess &&
+        isDeliveryFetchSuccess
       ) {
         const customer = customers.find((c: any) => c.id == sale[0].customerId);
         const channel = channels.find((ch: any) => ch.id == sale[0].channelId);
         const payment = payments.find((ch: any) => ch.id == sale[0].paymentId);
+        const deliver = delivery.find((ch: any) => ch.id == sale[0].deliverId);
 
         const res = {
           sale: sale[0],
           customer,
+          deliver,
           channel,
           payment,
         };

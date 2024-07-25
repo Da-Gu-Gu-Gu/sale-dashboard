@@ -4,6 +4,7 @@ ERP Dashboard including sub modules : sales, customer, payment methods, sale cha
 
 ## Demo
 
+<img width="1408" alt="adsf" src="https://raw.githubusercontent.com/Da-Gu-Gu-Gu/sale-dashboard/master/src/assets/Macbook-Air-localhost%20(2).png" />
 <img width="1408" alt="SCR-20240703-krqd" src="https://raw.githubusercontent.com/Da-Gu-Gu-Gu/sale-dashboard/master/src/assets/image.png"/>
 
 ## Run Locally

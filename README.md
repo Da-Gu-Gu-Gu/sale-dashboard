@@ -4,7 +4,7 @@ ERP Dashboard including sub modules : sales, customer, payment methods, sale cha
 
 ## Demo
 
-https://github.com/Da-Gu-Gu-Gu/sale-dashboard/blob/master/src/assets/images.png
+<img width="1408" alt="SCR-20240703-krqd" src="https://github.com/Da-Gu-Gu-Gu/sale-dashboard/blob/master/src/assets/images.png"/>
 
 ## Run Locally
 

@@ -26,7 +26,7 @@ const Customer = () => {
       </div>
       <div className="py-5">
         <Table
-          key={"id"}
+          rowKey="id"
           dataSource={customers}
           columns={columnData(setDeleted)}
         />

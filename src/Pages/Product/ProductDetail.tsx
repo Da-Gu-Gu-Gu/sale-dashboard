@@ -19,10 +19,10 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [form] = Form.useForm();
   const { loading, getProduct, product } = useProductDetail();
-  const { loading: upateLoading, updateProduct } = useUpdateProduct();
+  const { updateProduct } = useUpdateProduct();
   useEffect(() => {
     getProduct(id);
-  }, [id, loading, upateLoading]);
+  }, [id]);
 
   useEffect(() => {
     if (product) {
@@ -165,6 +165,7 @@ const ProductDetail = () => {
                 type="primary"
                 size="large"
                 className={`w-full`}
+                loading={loading}
                 onClick={isEdit ? updateHandler : () => setIsEdit(true)}
                 icon={isEdit ? <SendOutlined /> : <EditOutlined />}
               >

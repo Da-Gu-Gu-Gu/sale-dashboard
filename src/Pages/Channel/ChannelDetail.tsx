@@ -16,13 +16,13 @@ import { useParams } from "react-router-dom";
 const ChannelDetail = () => {
   const [isEdit, setIsEdit] = useState(false);
   const { loading, channel, getChannel } = useSaleChannelDetail();
-  const { loading: updateLoading, updateChannel } = useUpdateChannel();
+  const { updateChannel } = useUpdateChannel();
   const { id } = useParams();
   const [form] = Form.useForm();
 
   useEffect(() => {
     getChannel(id);
-  }, [id, loading, updateLoading]);
+  }, [id]);
 
   useEffect(() => {
     if (channel) {
@@ -30,7 +30,7 @@ const ChannelDetail = () => {
         name: channel.channel_name,
       });
     }
-  }, [channel, form]);
+  }, [channel]);
 
   const updateHandler = async () => {
     try {
@@ -87,7 +87,7 @@ const ChannelDetail = () => {
               className={`w-full `}
               onClick={isEdit ? updateHandler : () => setIsEdit(true)}
               icon={isEdit ? <SendOutlined /> : <EditOutlined />}
-              // loading={loading}
+              loading={loading}
             >
               {isEdit ? "Update" : "Edit"}
             </Button>

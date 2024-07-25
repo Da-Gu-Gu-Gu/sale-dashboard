@@ -14,13 +14,13 @@ import { useParams } from "react-router-dom";
 const PaymentDetail = () => {
   const [isEdit, setIsEdit] = useState(false);
   const { loading, payment, getPayment } = usePaymentDetail();
-  const { loading: updateLoading, updatePayment } = useUpdatePayment();
+  const { updatePayment } = useUpdatePayment();
   const { id } = useParams();
   const [form] = Form.useForm();
 
   useEffect(() => {
     getPayment(id);
-  }, [id, loading, updateLoading]);
+  }, [id]);
 
   useEffect(() => {
     if (payment) {
@@ -29,7 +29,7 @@ const PaymentDetail = () => {
         account: payment.payment_account,
       });
     }
-  }, [payment, form]);
+  }, [payment]);
 
   const updateHandler = async () => {
     try {
@@ -107,7 +107,7 @@ const PaymentDetail = () => {
               className={`w-full `}
               onClick={isEdit ? updateHandler : () => setIsEdit(true)}
               icon={isEdit ? <SendOutlined /> : <EditOutlined />}
-              // loading={loading}
+              loading={loading}
             >
               {isEdit ? "Update" : "Edit"}
             </Button>

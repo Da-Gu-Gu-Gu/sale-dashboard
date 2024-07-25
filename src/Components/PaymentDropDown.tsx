@@ -7,7 +7,7 @@ const PaymentDropDown = ({ data, disable, setPaymentId }: any) => {
   const { payments, getPaymentList, loading } = usePaymentList();
   useEffect(() => {
     getPaymentList();
-  }, [data, loading]);
+  }, []);
 
   const options = payments?.map((x: any) => {
     return {

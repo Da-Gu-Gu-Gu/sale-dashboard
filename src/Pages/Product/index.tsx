@@ -25,7 +25,11 @@ const Products = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={products} columns={columnData(setDeleted)} />
+        <Table
+          rowKey="id"
+          dataSource={products}
+          columns={columnData(setDeleted)}
+        />
       </div>
     </div>
   );

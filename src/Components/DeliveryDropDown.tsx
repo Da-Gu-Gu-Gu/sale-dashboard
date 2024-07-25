@@ -7,7 +7,7 @@ const DeliveryDropDown = ({ data, disable, setDeliveryId }: any) => {
   const { delivery, getDeliverList, loading } = useDelivery();
   useEffect(() => {
     getDeliverList();
-  }, [data, loading]);
+  }, []);
 
   const options = delivery?.map((x: any) => {
     return {

@@ -16,13 +16,13 @@ const { TextArea } = Input;
 const CustomerDetail = () => {
   const [isEdit, setIsEdit] = useState(false);
   const { loading, customer, getCustomer } = useCustomerDetail();
-  const { loading: updateLoading, updateCustomer } = useUpdateCustomer();
+  const { updateCustomer } = useUpdateCustomer();
   const { id } = useParams();
   const [form] = Form.useForm();
 
   useEffect(() => {
     getCustomer(id);
-  }, [id, loading, updateLoading]);
+  }, [id]);
 
   useEffect(() => {
     if (customer) {
@@ -130,7 +130,7 @@ const CustomerDetail = () => {
               className={`w-full `}
               onClick={isEdit ? updateHandler : () => setIsEdit(true)}
               icon={isEdit ? <SendOutlined /> : <EditOutlined />}
-              // loading={loading}
+              loading={loading}
             >
               {isEdit ? "Update" : "Edit"}
             </Button>

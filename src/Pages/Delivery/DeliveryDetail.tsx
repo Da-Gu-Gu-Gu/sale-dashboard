@@ -14,14 +14,14 @@ import { useDeliveryDetail, useUpdateDelivery } from "../../api/useDeliver";
 const DeliverDetail = () => {
   const [isEdit, setIsEdit] = useState(false);
   const { loading, delivery, getDelivery } = useDeliveryDetail();
-  const { loading: updateLoading, updateDelivery } = useUpdateDelivery();
+  const { updateDelivery } = useUpdateDelivery();
 
   const { id } = useParams();
   const [form] = Form.useForm();
 
   useEffect(() => {
     getDelivery(id);
-  }, [id, loading, updateLoading]);
+  }, [id]);
 
   useEffect(() => {
     if (delivery) {
@@ -29,7 +29,7 @@ const DeliverDetail = () => {
         name: delivery.deliver_name,
       });
     }
-  }, [delivery, form]);
+  }, [delivery]);
 
   const updateHandler = async () => {
     try {
@@ -86,7 +86,7 @@ const DeliverDetail = () => {
               className={`w-full `}
               onClick={isEdit ? updateHandler : () => setIsEdit(true)}
               icon={isEdit ? <SendOutlined /> : <EditOutlined />}
-              // loading={loading}
+              loading={loading}
             >
               {isEdit ? "Update" : "Edit"}
             </Button>

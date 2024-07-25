@@ -72,9 +72,9 @@
     {
       "id": "faf4",
       "date": "2024-07-24T17:00:00.000Z",
-      "customerId": "f118",
+      "customerId": "e7d0",
       "channelId": "0d63",
-      "paymentId": "8f12",
+      "paymentId": "4a48",
       "deliverId": "733c",
       "status": false,
       "orderProducts": [
@@ -85,7 +85,7 @@
           "product_price": 321,
           "product_stock": 3,
           "product_available": true,
-          "qty": 3
+          "qty": 2
         },
         {
           "id": "b3dd",
@@ -97,16 +97,16 @@
           "qty": 1
         }
       ],
-      "total": "1963.00"
+      "total": "1642.00"
     },
     {
       "id": "3ffc",
       "date": "2024-07-14T17:00:00.000Z",
-      "customerId": "e7d0",
+      "customerId": "7d02",
       "channelId": "0d63",
       "paymentId": "8f12",
       "deliverId": "733c",
-      "status": false,
+      "status": true,
       "orderProducts": [
         {
           "id": "764e",
@@ -119,36 +119,6 @@
         }
       ],
       "total": "3232.00"
-    },
-    {
-      "id": "f443",
-      "date": "2024-07-21T17:00:00.000Z",
-      "customerId": "e7d0",
-      "channelId": "0d63",
-      "paymentId": "4a48",
-      "deliverId": "65b2",
-      "status": false,
-      "orderProducts": [
-        {
-          "id": "b3dd",
-          "product_name": "Laptop",
-          "product_code": "323232",
-          "product_price": 1000,
-          "product_stock": 10,
-          "product_available": true,
-          "qty": 1
-        },
-        {
-          "id": "9ab2",
-          "product_name": "Tv",
-          "product_code": "23232",
-          "product_price": 10000,
-          "product_stock": 4,
-          "product_available": true,
-          "qty": 1
-        }
-      ],
-      "total": "11000.00"
     }
   ],
   "payments": [
@@ -168,9 +138,9 @@
       "payment_account": "890323212"
     },
     {
-      "id": "4a48",
-      "payment_name": "Aya Bank",
-      "payment_account": "8908902323"
+      "payment_name": "Aya  Bank",
+      "payment_account": "8908902323",
+      "id": "4a48"
     }
   ],
   "customers": [
@@ -219,12 +189,12 @@
       "product_available": true
     },
     {
-      "id": "764e",
-      "product_name": "Car",
+      "product_name": " Watch",
       "product_code": "23312",
       "product_price": 3232,
       "product_stock": 23,
-      "product_available": true
+      "product_available": true,
+      "id": "764e"
     }
   ],
   "channels": [
@@ -241,8 +211,8 @@
       "channel_name": "Phone Call"
     },
     {
-      "id": "4566",
-      "channel_name": "Live Sale"
+      "channel_name": "Live Sale",
+      "id": "4566"
     }
   ],
   "deliver": [
@@ -255,8 +225,8 @@
       "deliver_name": "Fast Delivery"
     },
     {
-      "id": "733c",
-      "deliver_name": "Marathon Delivery"
+      "deliver_name": "Marathon",
+      "id": "733c"
     }
   ]
 }

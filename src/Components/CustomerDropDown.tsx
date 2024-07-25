@@ -6,7 +6,7 @@ const CustomerDropDown = ({ data, disable, setCustomerId }: any) => {
   const { customers, getCustomerList } = useCustomerList();
   useEffect(() => {
     getCustomerList();
-  }, [data]);
+  }, []);
 
   const options = customers?.map((x: any) => {
     return {

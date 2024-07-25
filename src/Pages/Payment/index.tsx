@@ -25,7 +25,11 @@ const Payments = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={payments} columns={columnsData(setDeleted)} />
+        <Table
+          rowKey="id"
+          dataSource={payments}
+          columns={columnsData(setDeleted)}
+        />
       </div>
     </div>
   );

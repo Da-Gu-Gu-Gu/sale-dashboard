@@ -24,7 +24,11 @@ const SaleChannel = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={channels} columns={columnData(setDeleted)} />
+        <Table
+          rowKey="id"
+          dataSource={channels}
+          columns={columnData(setDeleted)}
+        />
       </div>
     </div>
   );

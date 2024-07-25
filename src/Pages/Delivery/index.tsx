@@ -24,7 +24,11 @@ const Delivery = () => {
         </Link>
       </div>
       <div className="py-5">
-        <Table dataSource={delivery} columns={columnData(setDeleted)} />
+        <Table
+          rowKey="id"
+          dataSource={delivery}
+          columns={columnData(setDeleted)}
+        />
       </div>
     </div>
   );

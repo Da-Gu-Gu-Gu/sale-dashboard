@@ -6,7 +6,7 @@ const SaleChannelDropDown = ({ data, disable, setChannelId }: any) => {
   const { channels, getChannelList, loading } = useSaleChannel();
   useEffect(() => {
     getChannelList();
-  }, [data, loading]);
+  }, []);
 
   const options = channels?.map((x: any) => {
     return {

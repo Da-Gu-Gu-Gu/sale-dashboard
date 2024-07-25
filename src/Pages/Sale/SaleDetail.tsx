@@ -205,7 +205,7 @@ const SaleDetail = () => {
               disabled={!isEdit}
               variant={isEdit ? "outlined" : "borderless"}
               className={`w-[150px] ${
-                !isEdit ? "bg-white text-black" : "custom-select"
+                !isEdit ? "bg-white text-black" : "custom-datepicker"
               }`}
               value={dayjs(date)}
               onChange={(v: any) => {

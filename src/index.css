@@ -10,4 +10,30 @@
   .custom-select.custom-select-disabled .ant-select-selection-item {
     @apply text-black;
   }
+
+  /* Apply specific styles to the DatePicker */
+.custom-datepicker .ant-picker-input > input {
+    @apply text-black;
+  }
+  
+  .custom-datepicker.ant-picker-disabled .ant-picker-input > input {
+    @apply text-black;
+  }
+  
+  /* Apply specific styles to the DatePicker's dropdown */
+  .custom-datepicker .ant-picker-dropdown .ant-picker-cell-inner {
+    @apply text-black;
+  }
+  
+  /* Example: Custom styles for the DatePicker's calendar icon */
+  .custom-datepicker .ant-picker-suffix {
+    @apply text-black;
+  }
+  
+  /* Example: Custom styles for the DatePicker's selected date */
+  .custom-datepicker .ant-picker-cell-selected .ant-picker-cell-inner {
+    @apply text-black;
+    @apply bg-blue-500;
+  }
+  
   

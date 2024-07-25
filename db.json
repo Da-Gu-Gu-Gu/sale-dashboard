@@ -2,11 +2,11 @@
   "sales": [
     {
       "id": "9ce4",
-      "date": "2024-06-30T17:00:00.000Z",
+      "date": "2024-07-22T17:00:00.000Z",
       "customerId": "c4f7",
       "channelId": "2",
       "paymentId": "2",
-      "deliverId": "2",
+      "deliverId": "7518",
       "status": false,
       "orderProducts": [
         {
@@ -59,6 +59,36 @@
         }
       ],
       "total": "2446.00"
+    },
+    {
+      "id": "042e",
+      "date": "2024-07-16T17:00:00.000Z",
+      "customerId": "0665",
+      "channelId": "6809",
+      "paymentId": "c194",
+      "deliverId": "7518",
+      "status": false,
+      "orderProducts": [
+        {
+          "product_name": "My App",
+          "product_code": "P2323",
+          "product_price": 123,
+          "product_stock": 3,
+          "product_available": true,
+          "id": "cf1f",
+          "qty": 1
+        },
+        {
+          "id": "cb9e",
+          "product_name": "SDSD",
+          "product_code": "122323",
+          "product_price": 323,
+          "product_stock": 22,
+          "product_available": true,
+          "qty": 1
+        }
+      ],
+      "total": "446.00"
     }
   ],
   "payments": [
@@ -131,8 +161,8 @@
   ],
   "channels": [
     {
-      "id": "2",
-      "channel_name": "Website"
+      "channel_name": "Website",
+      "id": "2"
     },
     {
       "id": "6809",
@@ -149,7 +179,7 @@
   ],
   "deliver": [
     {
-      "deliver_name": "NinjaVan",
+      "deliver_name": "hh",
       "id": "2"
     },
     {

@@ -23,7 +23,7 @@ const CustomerDropDown = ({ data, disable, setCustomerId }: any) => {
     <>
       {data && (
         <Select
-          defaultValue={data?.id ?? "1"}
+          defaultValue={data?.id ?? null}
           options={options}
           disabled={disable}
           onChange={(value) => setCustomerId(value)}

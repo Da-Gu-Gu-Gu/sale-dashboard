@@ -7,16 +7,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSales, useUpdateSale } from "../../api/useSales";
 import CustomerDropDown from "../../Components/CustomerDropDown";
 import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
-import { dateFormat } from "../../utils/utils";
-import { paths } from "../../routes/data";
 import PaymentDropDown from "../../Components/PaymentDropDown";
+import dayjs from "dayjs";
 
 const SaleDetail = () => {
   const { loading: updateLoading, updateSaleInvoice } = useUpdateSale();
   const [alertVisible, setAlertVisible] = useState(false);
   const [saleDetail, setSaleDetail] = useState<any>({});
   const [isEdit, setIsEdit] = useState(false);
-  const { id } = useParams();
+  const { id }: any = useParams();
   const { sale, getSale, loading } = useSales();
   const [customerId, setCustomerId] = useState();
   const [channelId, setChannelId] = useState();
@@ -64,13 +63,14 @@ const SaleDetail = () => {
   const updateSaleInvoiceHandler = () => {
     const payload = {
       ...saleDetail.sale,
-      customerId: Number(customerId),
-      channelId: Number(channelId),
-      id: Number(id),
+      customerId: customerId,
+      channelId: channelId,
+      paymentId: paymentId,
+      // id: id,
       total: calculateGrandTotal(),
       date: date,
     };
-    updateSaleInvoice(Number(id), payload);
+    updateSaleInvoice(id, payload);
     setAlertVisible(true);
     setTimeout(() => {
       setAlertVisible(false);
@@ -80,14 +80,15 @@ const SaleDetail = () => {
   const makeSaleInvoice = () => {
     const payload = {
       ...saleDetail.sale,
-      customerId: Number(customerId),
-      channelId: Number(channelId),
-      id: Number(id),
+      customerId: customerId,
+      channelId: channelId,
+      paymentId: paymentId,
+      // id: Number(id),
       status: true,
       total: calculateGrandTotal(),
       date: date,
     };
-    updateSaleInvoice(Number(id), payload);
+    updateSaleInvoice(id, payload);
     setAlertVisible(true);
 
     setTimeout(() => {
@@ -174,15 +175,10 @@ const SaleDetail = () => {
             <div>
               <p className="pb-1">Date</p>
               <DatePicker
-                defaultValue={date}
-                disabled={!isEdit}
-                format={dateFormat}
-                onChange={(v) => {
-                  if (v) {
-                    setDate(v);
-                  } else {
-                    setDate("");
-                  }
+                // defaultValue={date}
+                value={dayjs(date)}
+                onChange={(v: any) => {
+                  setDate(v);
                 }}
               />
             </div>
@@ -196,7 +192,6 @@ const SaleDetail = () => {
             loading={loading}
             rowKey="productId"
             dataSource={saleDetail?.sale?.orderProducts}
-            // columns={saleDetailColumnData([], handleQtyChange)}
             columns={saleDetailColumnData(
               saleDetail?.sale?.orderProducts,
               handleQtyChange

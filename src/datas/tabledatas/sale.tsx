@@ -76,8 +76,10 @@ export const columnsData = [
   },
   {
     title: "Date",
-    dataIndex: "date",
     key: "date",
+    render: (_: any, sale: any) => (
+      <p>{dayjs(sale?.date).format(dateFormat)}</p>
+    ),
   },
   {
     title: "Action",
@@ -90,7 +92,8 @@ export const columnsData = [
 
 import { InputNumber } from "antd";
 import { useDeleteSale } from "../../api/useSales";
-import { paths } from "../../routes/data";
+import { dateFormat } from "../../utils/utils";
+import dayjs from "dayjs";
 
 export const saleDetailColumnData = (data: any, onQtyChange: any) => [
   {
@@ -151,6 +154,7 @@ export const saleCreateColumnData = (data: any, onQtyChange: any) => [
           max={product?.product_stock}
           size="small"
           defaultValue={product.qty}
+          value={product.qty}
           onChange={(value) => onQtyChange(product.id, value)}
           className="cursor-pointer text-lg text-blue-700"
         />

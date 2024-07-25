@@ -21,7 +21,7 @@ const SaleChannelDropDown = ({ data, disable, setChannelId }: any) => {
         <Select
           disabled={disable}
           loading={loading}
-          defaultValue={data?.id ?? "1"}
+          defaultValue={data?.id ?? null}
           options={options}
           onChange={(value) => setChannelId(value)}
           className="w-[150px]"

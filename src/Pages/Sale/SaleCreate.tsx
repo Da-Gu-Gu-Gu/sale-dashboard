@@ -10,24 +10,22 @@ import SaleChannelDropDown from "../../Components/SaleChannelDropDown";
 import { useCreateSale } from "../../api/useSales";
 import { useNavigate } from "react-router-dom";
 import PaymentDropDown from "../../Components/PaymentDropDown";
+import { Dayjs } from "dayjs";
 
 const CreateSale = () => {
   const [selecteProdcuts, setSelectedProducts] = useState([]);
   const [alertVisible, setAlertVisible] = useState(false);
-  const [date, setDate] = useState(Date.now());
+  const [date, setDate] = useState<Dayjs | null>(null);
   const [customerId, setCustomerId] = useState("1");
   const [channelId, setChannelId] = useState("1");
   const [paymentId, setPaymentId] = useState("1");
   const { loading, createSaleInvoice } = useCreateSale();
   const navigate = useNavigate();
 
-  console.log(selecteProdcuts);
-
-  const handleQtyChange = (id: number, newQty: number) => {
+  const handleQtyChange = (id: string, newQty: number) => {
     const updatedOrderProducts: any = selecteProdcuts.map((item: any) =>
-      item.id === id ? { ...item, qty: newQty } : item
+      item.id == id ? { ...item, qty: newQty } : { ...item, qty: item.qty ?? 1 }
     );
-
     setSelectedProducts(updatedOrderProducts);
   };
 
@@ -41,7 +39,6 @@ const CreateSale = () => {
 
   const creatSaleHandler = () => {
     const payload = {
-      // id: String(3999),
       date: date,
       customerId: customerId,
       channelId: channelId,
@@ -50,7 +47,6 @@ const CreateSale = () => {
       orderProducts: selecteProdcuts,
       total: calculateGrandTotal(),
     };
-    console.log(payload);
     createSaleInvoice(payload);
     setAlertVisible(true);
 
@@ -60,7 +56,6 @@ const CreateSale = () => {
     }, 500);
   };
 
-  console.log(selecteProdcuts);
   return (
     <div className="relative">
       <div className="w-full flex justify-center absolute top-0 left-1/2 -translate-x-1/2">
@@ -113,6 +108,7 @@ const CreateSale = () => {
               <p className=" pb-1">Date</p>
               <DatePicker
                 // defaultValue={date}
+                value={date}
                 onChange={(v: any) => {
                   setDate(v);
                 }}
@@ -129,6 +125,7 @@ const CreateSale = () => {
           />
           <Table
             className="py-3"
+            key={"id"}
             pagination={false}
             dataSource={selecteProdcuts}
             columns={saleCreateColumnData(selecteProdcuts, handleQtyChange)}

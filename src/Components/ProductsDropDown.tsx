@@ -15,25 +15,41 @@ const ProductsDropDown = ({ selecteProdcuts, setSelectedProducts }: any) => {
       value: JSON.stringify(x),
     };
   });
+
+  const handleChange = (value: string[]) => {
+    const productsArray: any = value.map((item) => JSON.parse(item));
+
+    // Retain qty for existing products
+    const updatedProductsArray = productsArray.map((p: any) => {
+      const existingProduct = selecteProdcuts.find((sp: any) => sp.id === p.id);
+      return {
+        ...p,
+        qty: existingProduct ? existingProduct.qty : 1,
+      };
+    });
+
+    console.log("updatedProductsArray", updatedProductsArray);
+    setSelectedProducts(updatedProductsArray);
+  };
+
   return (
     <Select
       mode="multiple"
       allowClear
       style={{ width: "100%" }}
       placeholder="Please select"
-      onChange={(value: []) => {
-        const newProductsArray = value.map((item) => {
-          const parsedItem = JSON.parse(item);
-          const existingProduct = selecteProdcuts.find(
-            (p) => p.id === parsedItem.id
-          );
-          return existingProduct
-            ? existingProduct
-            : { ...parsedItem, qty: 1, productId: Number(parsedItem.id) };
-        });
-
-        setSelectedProducts(newProductsArray);
-      }}
+      onChange={handleChange}
+      // value={selecteProdcuts.map((product: any) => JSON.stringify(product))}
+      // onChange={(value: string[]) => {
+      //   const productsArray: any = value.map((item) => JSON.parse(item));
+      //   console.log(productsArray);
+      //   const qtyCheckArray = productsArray.map((p: any) => ({
+      //     ...p,
+      //     qty: p.qty ?? 1,
+      //   }));
+      //   console.log("qtyCheckarray", qtyCheckArray);
+      //   setSelectedProducts(qtyCheckArray);
+      // }}
       options={datas}
     />
   );

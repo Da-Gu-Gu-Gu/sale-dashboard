@@ -20,7 +20,7 @@ const SaleActions = ({ sale, setDeleted }: any) => {
 
       onOk: () => {
         deleteSaleInvoice(sale.id);
-        setDeleted(true);
+        setDeleted((prev: any) => !prev);
       },
     });
   };

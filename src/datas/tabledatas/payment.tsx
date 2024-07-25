@@ -15,7 +15,7 @@ const PaymentActions = ({ payment, setDeleted }: any) => {
       okType: "danger",
       onOk: () => {
         deletePayment(payment.id);
-        setDeleted(true);
+        setDeleted((prev: any) => !prev);
       },
     });
   };

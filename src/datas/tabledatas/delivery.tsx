@@ -15,7 +15,7 @@ const DeliveryAction = ({ deliver, setDeleted }: any) => {
       okType: "danger",
       onOk: () => {
         deleteDelivery(deliver.id);
-        setDeleted(true);
+        setDeleted((prev: any) => !prev);
       },
     });
   };

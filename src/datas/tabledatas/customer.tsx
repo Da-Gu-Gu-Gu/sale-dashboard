@@ -15,7 +15,7 @@ const CustomerAction = ({ customer, setDeleted }: any) => {
       okType: "danger",
       onOk: () => {
         deleteCustomer(customer.id);
-        setDeleted(true);
+        setDeleted((prev: any) => !prev);
       },
     });
   };

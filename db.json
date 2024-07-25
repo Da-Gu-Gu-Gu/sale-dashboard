@@ -1,13 +1,13 @@
 {
   "sales": [
     {
-      "id": "68d7",
-      "date": "2024-07-14T17:00:00.000Z",
-      "customerId": "e7d0",
+      "id": "611c",
+      "date": "2024-07-24T17:00:00.000Z",
+      "customerId": "7d02",
       "channelId": "0d63",
-      "paymentId": "7c4f",
+      "paymentId": "8f12",
       "deliverId": "65b2",
-      "status": true,
+      "status": false,
       "orderProducts": [
         {
           "id": "ce56",
@@ -16,66 +16,36 @@
           "product_price": 321,
           "product_stock": 3,
           "product_available": true,
-          "qty": 2
+          "qty": 3
         },
         {
-          "id": "b3dd",
-          "product_name": "Laptop",
-          "product_code": "323232",
-          "product_price": 1000,
-          "product_stock": 10,
+          "id": "8acf",
+          "product_name": "Rice Cooker",
+          "product_code": "989231a",
+          "product_price": 200,
+          "product_stock": 12,
           "product_available": true,
           "qty": 1
-        }
-      ],
-      "total": "1642.00"
-    },
-    {
-      "id": "2658",
-      "date": "2024-06-30T17:00:00.000Z",
-      "customerId": "7d02",
-      "channelId": "4566",
-      "paymentId": "8f12",
-      "deliverId": "52d0",
-      "status": true,
-      "orderProducts": [
-        {
-          "id": "ce56",
-          "product_name": "Smart Phone",
-          "product_code": "3232123",
-          "product_price": 321,
-          "product_stock": 3,
-          "product_available": true,
-          "qty": 2
         },
         {
-          "id": "9ab2",
-          "product_name": "Tv",
-          "product_code": "23232",
-          "product_price": 10000,
+          "id": "9475",
+          "product_name": "Laptop",
+          "product_code": "12323",
+          "product_price": 1000,
           "product_stock": 4,
           "product_available": true,
           "qty": 1
-        },
-        {
-          "id": "b3dd",
-          "product_name": "Laptop",
-          "product_code": "323232",
-          "product_price": 1000,
-          "product_stock": 10,
-          "product_available": true,
-          "qty": 1
         }
       ],
-      "total": "11642.00"
+      "total": "2163.00"
     },
     {
-      "id": "faf4",
-      "date": "2024-07-24T17:00:00.000Z",
-      "customerId": "e7d0",
-      "channelId": "0d63",
-      "paymentId": "4a48",
-      "deliverId": "733c",
+      "id": "8eaa",
+      "date": "2024-07-06T17:00:00.000Z",
+      "customerId": "81ac",
+      "channelId": "fa51",
+      "paymentId": "7c4f",
+      "deliverId": "52d0",
       "status": false,
       "orderProducts": [
         {
@@ -86,39 +56,60 @@
           "product_stock": 3,
           "product_available": true,
           "qty": 2
-        },
-        {
-          "id": "b3dd",
-          "product_name": "Laptop",
-          "product_code": "323232",
-          "product_price": 1000,
-          "product_stock": 10,
-          "product_available": true,
-          "qty": 1
         }
       ],
-      "total": "1642.00"
+      "total": "642.00"
     },
     {
-      "id": "3ffc",
+      "id": "3865",
       "date": "2024-07-14T17:00:00.000Z",
       "customerId": "7d02",
-      "channelId": "0d63",
-      "paymentId": "8f12",
-      "deliverId": "733c",
+      "channelId": "fa51",
+      "paymentId": "82ba",
+      "deliverId": "65b2",
       "status": true,
       "orderProducts": [
         {
-          "id": "764e",
-          "product_name": "Car",
-          "product_code": "23312",
-          "product_price": 3232,
+          "id": "d6f9",
+          "product_name": "Smart Watch",
+          "product_code": "123123",
+          "product_price": 1000,
           "product_stock": 23,
           "product_available": true,
           "qty": 1
         }
       ],
-      "total": "3232.00"
+      "total": "1000.00"
+    },
+    {
+      "id": "c078",
+      "date": "2024-06-30T17:00:00.000Z",
+      "customerId": "81ac",
+      "channelId": "0d63",
+      "paymentId": "8f12",
+      "deliverId": "733c",
+      "status": false,
+      "orderProducts": [
+        {
+          "id": "9475",
+          "product_name": "Laptop",
+          "product_code": "12323",
+          "product_price": 1000,
+          "product_stock": 4,
+          "product_available": true,
+          "qty": 1
+        },
+        {
+          "id": "8acf",
+          "product_name": "Rice Cooker",
+          "product_code": "989231a",
+          "product_price": 200,
+          "product_stock": 12,
+          "product_available": true,
+          "qty": 1
+        }
+      ],
+      "total": "1200.00"
     }
   ],
   "payments": [
@@ -138,9 +129,14 @@
       "payment_account": "890323212"
     },
     {
-      "payment_name": "Aya  Bank",
-      "payment_account": "8908902323",
-      "id": "4a48"
+      "id": "6d94",
+      "payment_name": "ICBC Thai",
+      "payment_account": "12323"
+    },
+    {
+      "id": "bfb5",
+      "payment_name": "CIMB Thai Bank",
+      "payment_account": "232323"
     }
   ],
   "customers": [
@@ -151,15 +147,9 @@
       "customer_address": "Bogyoke aung san"
     },
     {
-      "id": "e7d0",
+      "id": "81ac",
       "customer_name": "Da Gu Gu Gu",
-      "customer_phone": "092323213",
-      "customer_address": "UdomSuk"
-    },
-    {
-      "id": "f118",
-      "customer_name": "John",
-      "customer_phone": "02313232",
+      "customer_phone": "0610720214",
       "customer_address": "48 Soi Wachiratham Sathit 64, Bang Chak Subdistrict, Sukhumvit Road 101/1 Bang Chak, Phra Khanong,"
     }
   ],
@@ -181,20 +171,28 @@
       "product_available": true
     },
     {
-      "id": "b3dd",
+      "id": "9475",
       "product_name": "Laptop",
-      "product_code": "323232",
+      "product_code": "12323",
       "product_price": 1000,
-      "product_stock": 10,
+      "product_stock": 4,
       "product_available": true
     },
     {
-      "product_name": " Watch",
-      "product_code": "23312",
-      "product_price": 3232,
+      "id": "d6f9",
+      "product_name": "Smart Watch",
+      "product_code": "123123",
+      "product_price": 1000,
       "product_stock": 23,
-      "product_available": true,
-      "id": "764e"
+      "product_available": true
+    },
+    {
+      "id": "8acf",
+      "product_name": "Rice Cooker",
+      "product_code": "989231a",
+      "product_price": 200,
+      "product_stock": 12,
+      "product_available": true
     }
   ],
   "channels": [
@@ -207,12 +205,12 @@
       "channel_name": "Online"
     },
     {
-      "id": "21db",
-      "channel_name": "Phone Call"
+      "id": "fa51",
+      "channel_name": "On Ground"
     },
     {
-      "channel_name": "Live Sale",
-      "id": "4566"
+      "channel_name": "Live Sale (FB)",
+      "id": "8c00"
     }
   ],
   "deliver": [
@@ -225,7 +223,7 @@
       "deliver_name": "Fast Delivery"
     },
     {
-      "deliver_name": "Marathon",
+      "deliver_name": "Marathon Delivery",
       "id": "733c"
     }
   ]

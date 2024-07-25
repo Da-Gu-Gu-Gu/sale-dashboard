@@ -16,7 +16,7 @@ const ChannelActions = ({ channel, setDeleted }: any) => {
       okType: "danger",
       onOk: () => {
         deleteChannel(channel.id);
-        setDeleted(true);
+        setDeleted((prev: any) => !prev);
       },
     });
   };

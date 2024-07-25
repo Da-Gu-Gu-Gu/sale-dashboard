@@ -19,7 +19,7 @@ const ProductActions = ({ setDeleted, product }: any) => {
       okType: "danger",
       onOk: () => {
         deleteProduct(product.id);
-        setDeleted(true);
+        setDeleted((prev: any) => !prev);
       },
     });
   };

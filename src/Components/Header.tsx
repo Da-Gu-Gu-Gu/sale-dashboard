@@ -8,8 +8,10 @@ import { Button, Divider, Dropdown, MenuProps, theme } from "antd";
 
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Badge, Space } from "antd";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
   const { useToken } = theme;
+  const navigate = useNavigate();
   const { token } = useToken();
 
   const contentStyle: React.CSSProperties = {
@@ -52,6 +54,10 @@ const Header = () => {
               <Button
                 icon={<LogoutOutlined />}
                 type="primary"
+                onClick={() => {
+                  localStorage.removeItem("Email");
+                  navigate("/login");
+                }}
                 className="bg-red-400 w-full "
               >
                 LogOut

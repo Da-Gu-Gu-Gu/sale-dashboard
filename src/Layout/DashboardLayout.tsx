@@ -3,7 +3,6 @@ import Header from "../Components/Header";
 import menus from "../utils/menus";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { CloseCircleOutlined } from "@ant-design/icons";
 
 const { Content, Sider } = Layout;
 

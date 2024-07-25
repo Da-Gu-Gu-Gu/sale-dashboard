@@ -18,4 +18,6 @@ export const paths = {
   payment: "paymentmethods",
   paymentCreate: "/paymentmethods/create",
   paymentDetial: "/paymentmethods/:id",
+
+  login: "/login",
 };

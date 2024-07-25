@@ -43,7 +43,7 @@ const SaleDetail = () => {
 
   const handleQtyChange = (id: number, newQty: number) => {
     const updatedOrderProducts = saleDetail?.sale?.orderProducts.map(
-      (item: any) => (item.productId === id ? { ...item, qty: newQty } : item)
+      (item: any) => (item.id == id ? { ...item, qty: newQty } : item)
     );
 
     setSaleDetail((prevState: any) => ({

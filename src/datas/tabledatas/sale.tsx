@@ -120,7 +120,7 @@ export const saleDetailColumnData = (data: any, onQtyChange: any) => [
           max={10}
           size="small"
           defaultValue={product.qty}
-          onChange={(value) => onQtyChange(product.productId, value)}
+          onChange={(value) => onQtyChange(product?.id, value)}
           className="cursor-pointer text-lg text-blue-700"
         />
       </Space>
@@ -130,6 +130,7 @@ export const saleDetailColumnData = (data: any, onQtyChange: any) => [
     title: "Sub Total",
     key: "total",
     render: (_: any, product: any) => {
+      console.log("p", product);
       const price = product.product_price || 0;
       const qty = product.qty || 0;
       return <p>$ {(price * qty).toFixed(2)}</p>;
